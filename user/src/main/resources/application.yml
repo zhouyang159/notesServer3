@@ -1,0 +1,19 @@
+spring:
+  main:
+    web-application-type: servlet
+  jackson:
+    #日期格式化
+    #date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: zhouyang
+    url: jdbc:mysql://localhost:3306/notes230206?characterEncoding=utf-8&useSSL=false&allowPublicKeyRetrieval=true
+
+server:
+  port: 8081
+  servlet:
+    context-path: /api
+
+
