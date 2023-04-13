@@ -1,0 +1,28 @@
+2023-04-13 15:41:24.184  INFO 73083 --- [restartedMain] c.aboutdk.note.NotesServer2Application   : Starting NotesServer2Application using Java 11.0.8 on DKdeMacBook.local with PID 73083 (/Users/zhouyang/Desktop/Notes-App/notesServer3/note/target/classes started by zhouyang in /Users/zhouyang/Desktop/Notes-App/notesServer3)
+2023-04-13 15:41:24.186  INFO 73083 --- [restartedMain] c.aboutdk.note.NotesServer2Application   : The following 1 profile is active: "production"
+2023-04-13 15:41:24.278  INFO 73083 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-04-13 15:41:24.279  INFO 73083 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-04-13 15:41:25.845  INFO 73083 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2023-04-13 15:41:25.864  INFO 73083 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-04-13 15:41:25.864  INFO 73083 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.60]
+2023-04-13 15:41:25.949  INFO 73083 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring embedded WebApplicationContext
+2023-04-13 15:41:25.950  INFO 73083 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1671 ms
+2023-04-13 15:41:26.211  WARN 73083 --- [restartedMain] c.b.m.core.metadata.TableInfoHelper      : This primary key of "id" is primitive !不建议如此请使用包装类 in Class: "com.aboutdk.note.POJO.DO.IdDO"
+2023-04-13 15:41:26.453  WARN 73083 --- [restartedMain] c.b.m.core.metadata.TableInfoHelper      : This primary key of "id" is primitive !不建议如此请使用包装类 in Class: "com.aboutdk.note.POJO.DO.UserDO"
+2023-04-13 15:41:26.894  INFO 73083 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-04-13 15:41:26.922  INFO 73083 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path '/api'
+2023-04-13 15:41:26.932  INFO 73083 --- [restartedMain] c.aboutdk.note.NotesServer2Application   : Started NotesServer2Application in 3.912 seconds (JVM running for 4.847)
+2023-04-13 15:42:25.144  INFO 73140 --- [restartedMain] com.aboutdk.note.NoteApplication         : Starting NoteApplication using Java 11.0.8 on DKdeMacBook.local with PID 73140 (/Users/zhouyang/Desktop/Notes-App/notesServer3/note/target/classes started by zhouyang in /Users/zhouyang/Desktop/Notes-App/notesServer3)
+2023-04-13 15:42:25.149  INFO 73140 --- [restartedMain] com.aboutdk.note.NoteApplication         : The following 1 profile is active: "production"
+2023-04-13 15:42:25.241  INFO 73140 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2023-04-13 15:42:25.241  INFO 73140 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2023-04-13 15:42:26.668  INFO 73140 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2023-04-13 15:42:26.683  INFO 73140 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-04-13 15:42:26.683  INFO 73140 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.60]
+2023-04-13 15:42:26.755  INFO 73140 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/api]    : Initializing Spring embedded WebApplicationContext
+2023-04-13 15:42:26.755  INFO 73140 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1513 ms
+2023-04-13 15:42:26.996  WARN 73140 --- [restartedMain] c.b.m.core.metadata.TableInfoHelper      : This primary key of "id" is primitive !不建议如此请使用包装类 in Class: "com.aboutdk.note.POJO.DO.IdDO"
+2023-04-13 15:42:27.271  WARN 73140 --- [restartedMain] c.b.m.core.metadata.TableInfoHelper      : This primary key of "id" is primitive !不建议如此请使用包装类 in Class: "com.aboutdk.note.POJO.DO.UserDO"
+2023-04-13 15:42:27.736  INFO 73140 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-04-13 15:42:27.767  INFO 73140 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path '/api'
+2023-04-13 15:42:27.779  INFO 73140 --- [restartedMain] com.aboutdk.note.NoteApplication         : Started NoteApplication in 3.506 seconds (JVM running for 4.444)

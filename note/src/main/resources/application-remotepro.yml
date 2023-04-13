@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: dk
+    password: zhouyang
+    url: jdbc:mysql://8.134.95.64:3306/notes230318?characterEncoding=utf-8&useSSL=false&allowPublicKeyRetrieval=true
+
+
+server:
+  port: 8080
+  servlet:
+    context-path: /api
+
