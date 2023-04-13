@@ -20,7 +20,7 @@ import java.util.List;
  * @author zhouyang
  */
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/register")
 @Slf4j
 public class UserController {
 
@@ -30,22 +30,23 @@ public class UserController {
    @Autowired
    private UserMapper userMapper;
 
-   @PostMapping("/register")
+   @PostMapping("/user")
    private ResponseVO<UserDO> register(@Valid @RequestBody RegisterUserForm form, BindingResult bindingResult) {
       if (bindingResult.hasErrors()) {
          List<FieldError> fieldErrors = bindingResult.getFieldErrors();
          log.error("error field is : {} ,message is : {}", fieldErrors.get(0).getField(), fieldErrors.get(0).getDefaultMessage());
-         return ResponseVO.error(ResponseEnum.ERROR, fieldErrors.get(0).getField() + " " + fieldErrors.get(0).getDefaultMessage());
+         throw new RuntimeException(fieldErrors.get(0).getField() + " " +fieldErrors.get(0).getDefaultMessage());
       }
 
       if (form.getUsername().trim().contains(" ")) {
-         return ResponseVO.error(ResponseEnum.ERROR, "username must not contain space");
+         throw new RuntimeException("username must not contain space");
       }
       if (form.getPassword().trim().contains(" ")) {
-         return ResponseVO.error(ResponseEnum.ERROR, "password must not contain space");
+         throw new RuntimeException("password must not contain space");
       }
 
       UserDO userDO = userService.register(form);
+      userDO.setPassword(null);
       return ResponseVO.success(userDO);
    }
 }

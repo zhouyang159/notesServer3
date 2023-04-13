@@ -29,7 +29,7 @@ public class RuntimeExceptionHandler {
       }
 
       ResponseVO data = ResponseVO.error(ResponseEnum.ERROR, msg);
-      return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(data);
+      return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(data);
    }
 
    @ExceptionHandler(UserLoginException.class)
