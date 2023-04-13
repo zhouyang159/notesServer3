@@ -105,7 +105,6 @@ public class NoteController {
       newNote.setNumber(0);
       NoteDO noteDO = noteService.addNote(curUser, newNote);
 
-      broadCastClientUpdate(headers);
       return ResponseVO.success(noteDO);
    }
 
@@ -224,7 +223,6 @@ public class NoteController {
    public ResponseVO fakeDelete(@PathVariable String fakeDeleteId, @RequestHeader HttpHeaders headers) {
       log.info("fake delete note: {}", fakeDeleteId);
       String curUser = tokenService.getUsername(headers.getFirst("token"));
-      broadCastClientUpdate(headers);
 
       NoteForm find = null;
       List<NoteVO> liveNoteVoList = findLiveListByUsername(curUser);
@@ -271,7 +269,6 @@ public class NoteController {
    public ResponseVO delete(@PathVariable String noteId, @RequestHeader HttpHeaders headers) {
       log.info("delete note: {}", noteId);
       String curUser = tokenService.getUsername(headers.getFirst("token"));
-      broadCastClientUpdate(headers);
       NoteDO noteDO = noteService.deleteNote(curUser, noteId);
       return ResponseVO.success(noteDO);
    }
@@ -294,24 +291,5 @@ public class NoteController {
               .collect(Collectors.toList());
 
       return liveNoteFormList;
-   }
-
-   private void broadCastClientUpdate(HttpHeaders headers) {
-      String username = tokenService.getUsername(headers.getFirst("token"));
-
-      if (timerMap.get(username) != null) {
-         timerMap.get(username).cancel();
-      }
-
-      Timer timer = new Timer();
-      timerMap.put(username, timer);
-      timer.schedule(new TimerTask() {
-         @Override
-         public void run() {
-            String curSessionKey = headers.getFirst("sessionKey");
-            log.info("broadCastClientUpdate: {}, curSessionKey: {}", username, curSessionKey);
-            WebSocketServer.broadCastBySessionKey(curSessionKey, "update");
-         }
-      }, 2000);
    }
 }
