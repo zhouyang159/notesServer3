@@ -5,12 +5,12 @@ import com.aboutdk.user.POJO.DO.UserDO;
 import com.aboutdk.user.POJO.FORM.RegisterUserForm;
 import com.aboutdk.user.mybatisMapper.UserMapper;
 import com.aboutdk.user.service.IUserService;
-import com.aboutdk.user.util.Snowflake;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 
 @Service
@@ -19,9 +19,6 @@ public class UserServiceImpl implements IUserService {
 
    @Autowired
    private UserMapper userMapper;
-
-   @Autowired
-   private Snowflake snowflake;
 
    @Override
    public UserDO register(RegisterUserForm form) {
@@ -35,7 +32,10 @@ public class UserServiceImpl implements IUserService {
       UserDO userDO = new UserDO();
       BeanUtils.copyProperties(form, userDO);
 
-      long id = snowflake.nextId();
+      RestTemplate restTemplate = new RestTemplate();
+      String snowflakeID = restTemplate.getForObject("http://localhost:8082/snowflake/id", String.class);
+
+      long id = Long.valueOf(snowflakeID);
       userDO.setId(id);
 
       int row = userMapper.insert(userDO);

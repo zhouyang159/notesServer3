@@ -26,4 +26,7 @@ logging:
   file:
     name: ./logs/NoteServer.log
 
+snowflake:
+  baseUrl: "http://localhost:8082"
+
 

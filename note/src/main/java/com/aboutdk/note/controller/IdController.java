@@ -1,33 +1,24 @@
 package com.aboutdk.note.controller;
 
-import com.aboutdk.note.service.impl.SnowflakeIDServiceImpl;
-import com.aboutdk.note.util.Snowflake;
+import com.aboutdk.note.POJO.VO.ResponseVO;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
 @RestController
 @RequestMapping("/snowflake")
 @Slf4j
 public class IdController {
 
-   @Autowired
-   private Snowflake snowflake;
-
-   @Autowired
-   private SnowflakeIDServiceImpl snowflakeIDService;
+   @Value("${snowflake.baseUrl}")
+   private String snowflakeBaseUrl;
 
    @GetMapping("/id")
-   public long generateSnowflakeId() {
-      long id = snowflake.nextId();
-      snowflakeIDService.addID(id);
+   public ResponseVO<String> generateSnowflakeId() {
+      RestTemplate restTemplate = new RestTemplate();
+      String snowflakeID = restTemplate.getForObject(snowflakeBaseUrl + "/snowflake/id", String.class);
 
-      return id;
-   }
-
-   @PostMapping("/parse/{id}")
-   public long[] parseSnowflakeId(@PathVariable long id) {
-      long[] parse = snowflake.parse(id);
-      return parse;
+      return ResponseVO.success(snowflakeID);
    }
 }

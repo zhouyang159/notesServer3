@@ -17,7 +17,7 @@
     <modules>
         <module>note</module>
         <module>user</module>
-        <module>SnowflakID</module>
+        <module>SnowflakeID</module>
     </modules>
 
     <properties>
