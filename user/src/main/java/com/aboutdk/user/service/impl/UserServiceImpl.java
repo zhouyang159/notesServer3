@@ -3,6 +3,7 @@ package com.aboutdk.user.service.impl;
 
 import com.aboutdk.user.POJO.DO.UserDO;
 import com.aboutdk.user.POJO.FORM.RegisterUserForm;
+import com.aboutdk.user.client.SnowflakeIdClient;
 import com.aboutdk.user.mybatisMapper.UserMapper;
 import com.aboutdk.user.service.IUserService;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -10,8 +11,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
-
 
 @Service
 @Slf4j
@@ -19,6 +18,9 @@ public class UserServiceImpl implements IUserService {
 
    @Autowired
    private UserMapper userMapper;
+
+   @Autowired
+   SnowflakeIdClient snowflakeIdClient;
 
    @Override
    public UserDO register(RegisterUserForm form) {
@@ -32,10 +34,9 @@ public class UserServiceImpl implements IUserService {
       UserDO userDO = new UserDO();
       BeanUtils.copyProperties(form, userDO);
 
-      RestTemplate restTemplate = new RestTemplate();
-      String snowflakeID = restTemplate.getForObject("http://localhost:8082/snowflake/id", String.class);
+      String snowflakeId = snowflakeIdClient.getSnowflakeId();
 
-      long id = Long.valueOf(snowflakeID);
+      long id = Long.parseLong(snowflakeId);
       userDO.setId(id);
 
       int row = userMapper.insert(userDO);

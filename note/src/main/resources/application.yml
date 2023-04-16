@@ -1,4 +1,6 @@
 spring:
+  application:
+    name: NoteApplication
   main:
     web-application-type: servlet
   jackson:
@@ -25,8 +27,4 @@ logging:
       file-name-pattern: "${LOG_FILE}.%d{yyyy-MM-dd}.%i.log"
   file:
     name: ./logs/NoteServer.log
-
-snowflake:
-  baseUrl: "http://localhost:8082"
-
 

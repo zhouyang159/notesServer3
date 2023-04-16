@@ -1,4 +1,6 @@
 spring:
+  application:
+    name: SnowflakeidApplication
   main:
     web-application-type: servlet
   jackson:

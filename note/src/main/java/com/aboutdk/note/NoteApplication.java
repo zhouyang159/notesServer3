@@ -3,6 +3,7 @@ package com.aboutdk.note;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -13,6 +14,7 @@ import java.io.IOException;
  * @author zhouyang
  */
 @SpringBootApplication
+@EnableFeignClients
 @MapperScan("com.aboutdk.note.mapper")
 @Controller
 public class NoteApplication {
