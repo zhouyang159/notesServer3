@@ -19,6 +19,7 @@
         <module>user</module>
         <module>SnowflakeID</module>
         <module>discovery-service</module>
+        <module>gateway-service</module>
     </modules>
 
     <properties>

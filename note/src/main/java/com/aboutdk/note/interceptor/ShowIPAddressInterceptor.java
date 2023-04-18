@@ -13,7 +13,8 @@ public class ShowIPAddressInterceptor implements HandlerInterceptor {
    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
       String method = request.getMethod();
       StringBuffer requestUrl = request.getRequestURL();
-      log.info("{} {}",  method, requestUrl );
+      String contextPath = request.getContextPath();
+      log.info("{} {} {}",  method, requestUrl, contextPath );
       return true;
    }
 }

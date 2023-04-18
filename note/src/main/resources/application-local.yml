@@ -10,8 +10,3 @@ spring:
 #    username: elastic
 #    password: VMZmuH6EZNYr1ZvXpttT
 
-server:
-  port: 8080
-  servlet:
-    context-path: /api/local
-

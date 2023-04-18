@@ -6,8 +6,3 @@ spring:
     url: jdbc:mysql://localhost:3306/notes230412?characterEncoding=utf-8&useSSL=false&allowPublicKeyRetrieval=true
 
 
-server:
-  port: 8080
-  servlet:
-    context-path: /api
-

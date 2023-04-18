@@ -19,7 +19,6 @@ import java.util.List;
  * @author zhouyang
  */
 @RestController
-@RequestMapping("/register")
 @Slf4j
 public class UserController {
 

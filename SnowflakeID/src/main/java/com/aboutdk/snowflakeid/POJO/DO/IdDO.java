@@ -18,4 +18,6 @@ public class IdDO {
    private String creator;
 
    private String action;
+
+   private Integer i;
 }

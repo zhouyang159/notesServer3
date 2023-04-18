@@ -28,11 +28,6 @@ public class UserLoginInterceptor implements HandlerInterceptor {
     if (token == null || "null".equals(token) || StringUtils.isEmpty(token)) {
       throw new InvalidTokenException("token miss");
     }
-      // websocket sessionKey
-//    String sessionKey = request.getHeader("sessionKey");
-//    if (sessionKey == null || sessionKey.equals("null")) {
-//      throw new InvalidSessionKeyException("sessionKey miss");
-//    }
 
     try {
       tokenService.validateToken(token);
