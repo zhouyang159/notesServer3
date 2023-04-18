@@ -21,9 +21,7 @@ class UserControllerTest {
 
    @Test
    void register() {
-      RestTemplate restTemplate = new RestTemplate();
-      String hi = restTemplate.getForObject("http://localhost:8081/api/register/test", String.class);
-      System.out.println(hi);
+
    }
 
 }

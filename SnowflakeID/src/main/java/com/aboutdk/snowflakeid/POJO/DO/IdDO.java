@@ -14,4 +14,8 @@ public class IdDO {
    private String parseStr;
 
    private String createDateTime;
+
+   private String creator;
+
+   private String action;
 }

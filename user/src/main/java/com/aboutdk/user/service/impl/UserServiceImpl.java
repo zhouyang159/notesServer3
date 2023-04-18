@@ -34,7 +34,7 @@ public class UserServiceImpl implements IUserService {
       UserDO userDO = new UserDO();
       BeanUtils.copyProperties(form, userDO);
 
-      String snowflakeId = snowflakeIdClient.getSnowflakeId();
+      String snowflakeId = snowflakeIdClient.getSnowflakeId("register");
 
       long id = Long.parseLong(snowflakeId);
       userDO.setId(id);

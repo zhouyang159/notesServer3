@@ -21,13 +21,15 @@ public class SnowflakeIDServiceImpl implements ISnowflakeIDService {
 
 
    @Override
-   public int addID(long id) {
+   public int addID(long id, String creator, String action) {
       long[] parse = snowflake.parse(id);
 
       IdDO idDO = IdDO.builder()
               .id(id)
               .parseStr(Arrays.toString(parse))
               .createDateTime(new Date().toString())
+              .creator(creator)
+              .action(action)
               .build();
 
       return idMapper.insert(idDO);

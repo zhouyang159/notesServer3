@@ -18,4 +18,9 @@ server:
 #  servlet:
 #    context-path: /api
 
-
+logging:
+  logback:
+    rollingpolicy:
+      file-name-pattern: "${LOG_FILE}.%d{yyyy-MM-dd}.%i.log"
+  file:
+    name: ./logs/NoteServer.log
