@@ -12,6 +12,10 @@ public class ResponseVO<T> {
 
   private T data;
 
+  public ResponseVO() {
+
+  }
+
   public ResponseVO(Integer status, String msg) {
     this.status = status;
     this.msg = msg;
