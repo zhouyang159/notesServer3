@@ -24,6 +24,14 @@ public class GatewayService {
               .route(p -> p
                       .path("/api/note/**")
                       .uri("http://localhost:8080"))
+              .route("pc",
+                      r -> r.path("/pc")
+                              .filters(f -> f.rewritePath("/pc", "/pc/index.html"))
+                              .uri("http://localhost"))
+              .route("register",
+                      r -> r.path("/register")
+                              .filters(f -> f.rewritePath("/register", "/register/index.html"))
+                              .uri("http://localhost"))
               .build();
    }
 }
