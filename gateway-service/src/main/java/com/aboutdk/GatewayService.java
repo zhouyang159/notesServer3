@@ -17,6 +17,7 @@ import java.util.List;
 @RestController
 public class GatewayService {
    public static void main(String[] args) {
+      // 应该先启动 note 和 user，然后再启动 gateway
       SpringApplication.run(GatewayService.class, args);
    }
 

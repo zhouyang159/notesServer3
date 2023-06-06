@@ -5,12 +5,13 @@
     <parent>
         <artifactId>notesServer3</artifactId>
         <groupId>com.aboutdk</groupId>
-        <version>1.0-SNAPSHOT</version>
+        <version>1.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.aboutdk.note</groupId>
     <artifactId>note</artifactId>
+    <version>1.3</version>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
