@@ -46,4 +46,32 @@ public class UserServiceImpl implements IUserService {
 
       return userDO;
    }
+
+   @Override
+   public UserDO registerWithOpenid(String openid) {
+      QueryWrapper<UserDO> queryWrapper = new QueryWrapper<>();
+      queryWrapper.eq("openid", openid);
+      UserDO oldUserDO = userMapper.selectOne(queryWrapper);
+      if (oldUserDO != null) {
+         throw new RuntimeException("此openid已经被注册");
+      }
+
+      UserDO userDO = new UserDO();
+      userDO.setOpenid(openid);
+      userDO.setUsername(openid);
+      userDO.setNickname("WxMiniprogramUser");
+      userDO.setPassword("miniprogram_password");
+
+      String snowflakeId = snowflakeIdClient.getSnowflakeId("register");
+
+      long id = Long.parseLong(snowflakeId);
+      userDO.setId(id);
+
+      int row = userMapper.insert(userDO);
+      if (row < 1) {
+         throw new RuntimeException("插入新注册用户失败");
+      }
+
+      return userDO;
+   }
 }

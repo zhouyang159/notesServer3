@@ -15,10 +15,10 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import com.aboutdk.note.utils.Utils;
 
 @Service
 @Slf4j
@@ -61,16 +61,16 @@ public class UserServiceImpl implements IUserService {
    }
 
    @Override
-   public String login(String username, String password) {
+   public String login(String username, String md5password) {
       UserDO userDO = this.findUserDO(username);
       if (userDO == null) {
          throw new UserNotFindException();
       }
 
-      String hashPassword = this.MD5(userDO.getPassword());
-      log.warn("client password: {}", password);
-      log.warn("mysql password: {}", hashPassword);
-      if (!password.equals(hashPassword)) {
+      String hashPassword = Utils.MD5(userDO.getPassword());
+      if (!md5password.equals(hashPassword)) {
+         log.warn("client password: {}", md5password);
+         log.warn("mysql password: {}", hashPassword);
          throw new UserLoginException();
       }
 
@@ -131,17 +131,12 @@ public class UserServiceImpl implements IUserService {
       return userDO;
    }
 
-   public String MD5(String md5) {
-      try {
-         MessageDigest md = MessageDigest.getInstance("MD5");
-         byte[] array = md.digest(md5.getBytes());
-         StringBuffer sb = new StringBuffer();
-         for (int i = 0; i < array.length; ++i) {
-            sb.append(Integer.toHexString((array[i] & 0xFF) | 0x100).substring(1,3));
-         }
-         return sb.toString();
-      } catch (NoSuchAlgorithmException e) {
-      }
-      return null;
+   @Override
+   public UserDO findUserDOByOpenid(String openid) {
+      QueryWrapper<UserDO> queryWrapper = new QueryWrapper<>();
+      queryWrapper.eq("openid", openid);
+      UserDO userDO = userMapper.selectOne(queryWrapper);
+
+      return userDO;
    }
 }

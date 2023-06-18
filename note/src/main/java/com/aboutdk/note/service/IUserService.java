@@ -22,4 +22,6 @@ public interface IUserService {
   void delete(LoginForm form);
 
   UserDO findUserDO(String username);
+
+  UserDO findUserDOByOpenid(String openid);
 }

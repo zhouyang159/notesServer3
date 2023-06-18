@@ -11,6 +11,8 @@ public class UserDO {
 
     private long id;
 
+    private String openid;
+
     private String username;
 
     private String nickname;

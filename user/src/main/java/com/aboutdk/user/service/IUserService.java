@@ -7,4 +7,6 @@ import com.aboutdk.user.POJO.FORM.RegisterUserForm;
 public interface IUserService {
 
   UserDO register(RegisterUserForm form);
+
+  UserDO registerWithOpenid(String openid);
 }

@@ -47,4 +47,10 @@ public class UserController {
       userDO.setPassword(null);
       return ResponseVO.success(userDO);
    }
+
+   @PostMapping("/user/{openid}")
+   private ResponseVO<UserDO> registerWithOpenid(@PathVariable String openid) {
+      UserDO userDO = userService.registerWithOpenid(openid);
+      return ResponseVO.success(userDO);
+   }
 }
