@@ -30,7 +30,7 @@ public class GatewayService {
       List<String> services = this.discoveryClient.getServices();
       List<ServiceInstance> instances = new ArrayList<ServiceInstance>();
       services.forEach(serviceName -> {
-         this.discoveryClient.getInstances(serviceName).forEach(instance ->{
+         this.discoveryClient.getInstances(serviceName).forEach(instance -> {
             instances.add(instance);
          });
       });
@@ -52,7 +52,11 @@ public class GatewayService {
       }
 
       String finalNoteServiceIp = noteServiceIp;
+      System.out.println("finalNoteServiceIp: " + finalNoteServiceIp);
+
       String finalUserServiceIp = userServiceIp;
+      System.out.println("finalUserServiceIp: " + finalUserServiceIp);
+
       return builder.routes()
               .route(p -> p
                       .path("/api/note/**")

@@ -66,6 +66,8 @@ public class UserController {
 
    @PostMapping("/login")
    private ResponseVO<String> login(@Valid @RequestBody LoginForm form, BindingResult bindingResult) throws Exception {
+      log.info("request: /user/login");
+      log.info(form.toString());
       if (bindingResult.hasErrors()) {
          List<FieldError> fieldErrors = bindingResult.getFieldErrors();
          log.error("error field is : {} ,message is : {}", fieldErrors.get(0).getField(), fieldErrors.get(0).getDefaultMessage());
