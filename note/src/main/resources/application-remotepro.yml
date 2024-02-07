@@ -1,7 +1,6 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    username: dk
-    password: zhouyang
-    url: jdbc:mysql://8.134.95.64:3306/notes230318?characterEncoding=utf-8&useSSL=false&allowPublicKeyRetrieval=true
-
+    username: ${global.username}
+    password: ${global.password}
+    url: ${global.remoteDBUrl}
