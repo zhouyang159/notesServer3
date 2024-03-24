@@ -5,8 +5,11 @@ spring:
     web-application-type: servlet
   jackson:
     time-zone: GMT+8
-  profiles:
-    active: local
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: ${global.username}
+    password: ${global.password}
+    url: ${global.remoteDBUrl}
 
 server:
   port: 8082
