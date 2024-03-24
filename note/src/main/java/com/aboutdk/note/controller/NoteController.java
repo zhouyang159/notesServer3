@@ -28,7 +28,7 @@ import static com.aboutdk.note.consts.NoteConst.LIVE_NOTE;
 @RestController
 @RequestMapping("/note")
 @Slf4j
-public class NoteController {
+public class NoteController extends Thread {
 
    @Autowired
    private NoteServiceImpl noteService;
@@ -37,6 +37,13 @@ public class NoteController {
    private TokenService tokenService;
 
    private Map<String, Timer> timerMap = new HashMap<>();
+
+   @Override
+   public void run() {
+      for (int i = 0; i < 10; i++) {
+         System.out.println("方式一-->" + i);
+      }
+   }
 
    @GetMapping("/findAll")
    public ResponseVO<List<NoteVO>> findAll(@RequestHeader HttpHeaders headers) {

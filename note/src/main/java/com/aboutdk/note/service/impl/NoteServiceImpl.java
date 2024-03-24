@@ -26,7 +26,6 @@ public class NoteServiceImpl implements INoteService {
 
    @Override
    public List<NoteDO> findAllByUsername(String username) {
-
       QueryWrapper<NoteDO> queryWrapper = new QueryWrapper<>();
       queryWrapper.eq("username", username);
 
