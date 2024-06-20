@@ -61,16 +61,21 @@ public class NoteServiceImpl implements INoteService {
    }
 
    @Override
-   public NoteDO updateNote(String username, NoteForm form) {
+   public NoteDO updateNote(String username,
+                            NoteForm form) {
       return this.realUpdateNote(username, form, false);
    }
 
    @Override
-   public NoteDO updateNote(String username, NoteForm form, Boolean refreshUpdateTime) {
+   public NoteDO updateNote(String username,
+                            NoteForm form,
+                            Boolean refreshUpdateTime) {
       return this.realUpdateNote(username, form, refreshUpdateTime);
    }
 
-   public NoteDO realUpdateNote(String username, NoteForm form, Boolean refreshUpdateTime) {
+   public NoteDO realUpdateNote(String username,
+                                NoteForm form,
+                                Boolean refreshUpdateTime) {
       this.validateNote(username, form.getId());
 
       NoteDO update = this.findById(form.getId());

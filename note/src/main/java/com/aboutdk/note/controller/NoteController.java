@@ -67,7 +67,8 @@ public class NoteController extends Thread {
    }
 
    @GetMapping("/{id}")
-   public ResponseVO<NoteDO> findById(@PathVariable String id, @RequestHeader HttpHeaders headers) throws Exception {
+   public ResponseVO<NoteDO> findById(@PathVariable String id,
+                                      @RequestHeader HttpHeaders headers) throws Exception {
       log.info("fetch notes");
       String username = tokenService.getUsername(headers.getFirst("token"));
 
@@ -83,7 +84,8 @@ public class NoteController extends Thread {
    }
 
    @PostMapping
-   public ResponseVO addNote(@Valid @RequestBody NoteForm newNote, @RequestHeader HttpHeaders headers) {
+   public ResponseVO addNote(@Valid @RequestBody NoteForm newNote,
+                             @RequestHeader HttpHeaders headers) {
       log.info("addNote: {}", newNote.toString());
       String curUser = tokenService.getUsername(headers.getFirst("token"));
 
@@ -116,7 +118,8 @@ public class NoteController extends Thread {
    }
 
    @PutMapping
-   public ResponseVO updateNoteAndReorder(@Valid @RequestBody NoteForm updateForm, @RequestHeader HttpHeaders headers) throws UpdateNoteVersionWrongException {
+   public ResponseVO updateNoteAndReorder(@Valid @RequestBody NoteForm updateForm,
+                                          @RequestHeader HttpHeaders headers) throws UpdateNoteVersionWrongException {
       if (updateForm.getDeleted().equals(DELETED_NOTE)) {
          throw new RuntimeException("此接口不允许伪删除note");
       }
@@ -167,7 +170,7 @@ public class NoteController extends Thread {
          cur.setNumber(i + 1);
       }
 
-      // set the updateForm to number 0, so it can be ranked first
+      // set the updateForm to number 0, so it can be show in first of the note list
       updateForm.setNumber(0);
       noteService.updateNote(curUser, updateForm, true);
       for (NoteForm noteForm : liveNoteList) {
