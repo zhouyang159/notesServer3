@@ -3516,3 +3516,4 @@ java.util.concurrent.TimeoutException: null
 2024-06-20 17:08:37.047  INFO 2248 --- [http-nio-8080-exec-3] c.a.note.controller.NoteController       : fetch notes
 2024-06-20 17:09:06.255  WARN 2248 --- [HikariPool-4 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-4 - Thread starvation or clock leap detected (housekeeper delta=49s187ms439µs600ns).
 2024-06-20 17:09:27.476  INFO 18064 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 4ms
+2024-06-20 17:10:27.483  INFO 18064 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 6ms
