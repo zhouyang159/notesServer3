@@ -2,7 +2,7 @@ package com.aboutdk.note.POJO.VO;
 
 import lombok.Data;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Data
 public class NoteVO {
@@ -18,11 +18,11 @@ public class NoteVO {
 
    private Boolean encrypt;
 
-   private Date createTime;
+   private LocalDateTime createTime;
 
-   private Date updateTime;
+   private LocalDateTime updateTime;
 
-   private Date deleteTime;
+   private LocalDateTime deleteTime;
 
    private Integer deleted;
 
