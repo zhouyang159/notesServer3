@@ -12,4 +12,5 @@ logging:
     rollingpolicy:
       file-name-pattern: "${LOG_FILE}.%d{yyyy-MM-dd}.%i.log"
   file:
-    name: ./logs/NoteServer.log
+    name: ./logs/Geteway-%d{yyyy-MM-dd}.log
+    path: ./logs

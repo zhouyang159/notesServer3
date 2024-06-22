@@ -19,8 +19,6 @@ server:
     context-path: /api/register
 
 logging:
-  logback:
-    rollingpolicy:
-      file-name-pattern: "${LOG_FILE}.%d{yyyy-MM-dd}.%i.log"
   file:
-    name: ./logs/NoteServer.log
+    name: ./logs/User-%d{yyyy-MM-dd}.log
+    path: ./logs

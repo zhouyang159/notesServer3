@@ -15,6 +15,7 @@ server:
   servlet:
     context-path: /api/note
 
+
 #mybatis:
 #  configuration:
 #    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
@@ -22,9 +23,6 @@ server:
 #  mapper-locations: classpath:mappers/*.xml
 
 logging:
-  logback:
-    rollingpolicy:
-      file-name-pattern: "${LOG_FILE}.%d{yyyy-MM-dd}.%i.log"
   file:
-    name: ./logs/NoteServer.log
-
+    name: ./logs/Note-%d{yyyy-MM-dd}.log
+    path: ./logs

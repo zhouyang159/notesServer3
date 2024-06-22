@@ -7,8 +7,9 @@ eureka:
     fetch-registry: false
 
 logging:
-  logback:
-    rollingpolicy:
-      file-name-pattern: "${LOG_FILE}.%d{yyyy-MM-dd}.%i.log"
+#  logback:
+#    rollingpolicy:
+#      file-name-pattern: "${LOG_FILE}.%d{yyyy-MM-dd}.%i.log"
   file:
-    name: ./logs/NoteServer.log
+    name: ./logs/discover-service/discover-service-%d{yyyy-MM-dd}.log
+    path: ./logs/discover-service
