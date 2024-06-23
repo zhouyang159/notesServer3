@@ -3,3 +3,4 @@ global:
   username: dk
   password: zhouyang
   dbUrl: jdbc:mysql://8.134.95.64:3306/notes240207_dev?characterEncoding=utf-8&useSSL=false&allowPublicKeyRetrieval=true
+#  dbUrl: jdbc:mysql://localhost:3306/notes240207?characterEncoding=utf-8&useSSL=false&allowPublicKeyRetrieval=true
