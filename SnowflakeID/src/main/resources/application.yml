@@ -18,5 +18,5 @@ server:
 
 logging:
   file:
-    name: ./logs/SnowflakeID-%d{yyyy-MM-dd}.log
+    name: ./logs/SnowflakeID/SnowflakeID-%d{yyyy-MM-dd}.log
     path: ./logs

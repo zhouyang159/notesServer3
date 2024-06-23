@@ -20,5 +20,5 @@ server:
 
 logging:
   file:
-    name: ./logs/User-%d{yyyy-MM-dd}.log
+    name: ./logs/User/User-%d{yyyy-MM-dd}.log
     path: ./logs
