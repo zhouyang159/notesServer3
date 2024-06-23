@@ -2,4 +2,4 @@
 global:
   username: dk
   password: zhouyang
-  remoteDBUrl: jdbc:mysql://8.134.95.64:3306/notes240207_dev?characterEncoding=utf-8&useSSL=false&allowPublicKeyRetrieval=true
+  dbUrl: jdbc:mysql://8.134.95.64:3306/notes240207_dev?characterEncoding=utf-8&useSSL=false&allowPublicKeyRetrieval=true

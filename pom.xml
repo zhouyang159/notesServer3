@@ -15,9 +15,9 @@
     <packaging>pom</packaging>
     <version>1.0</version>
     <modules>
-        <module>note</module>
-        <module>user</module>
-        <module>SnowflakeID</module>
+        <module>note-service</module>
+        <module>user-service</module>
+        <module>snowflakeID-service</module>
         <module>discovery-service</module>
         <module>gateway-service</module>
     </modules>

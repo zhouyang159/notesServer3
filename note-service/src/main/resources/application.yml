@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: NoteApplication
+  main:
+    web-application-type: servlet
+  jackson:
+    #日期格式化
+    #date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  profiles:
+    active: remotepro
+
+server:
+  port: 8080
+  servlet:
+    context-path: /api/note
+
+
+#mybatis:
+#  configuration:
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+#    map-underscore-to-camel-case: true
+#  mapper-locations: classpath:mappers/*.xml
+
+logging:
+  file:
+    name: ./logs/Note/Note-%d{yyyy-MM-dd}.log
+    path: ./logs
