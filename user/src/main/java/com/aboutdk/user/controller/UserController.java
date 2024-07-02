@@ -4,7 +4,6 @@ package com.aboutdk.user.controller;
 import com.aboutdk.user.POJO.DO.UserDO;
 import com.aboutdk.user.POJO.FORM.RegisterUserForm;
 import com.aboutdk.user.POJO.VO.ResponseVO;
-import com.aboutdk.user.mybatisMapper.UserMapper;
 import com.aboutdk.user.service.IUserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,11 +24,9 @@ public class UserController {
    @Autowired
    private IUserService userService;
 
-   @Autowired
-   private UserMapper userMapper;
-
    @PostMapping("/user")
-   private ResponseVO<UserDO> register(@Valid @RequestBody RegisterUserForm form, BindingResult bindingResult) {
+   private ResponseVO<UserDO> register(@Valid @RequestBody RegisterUserForm form,
+                                       BindingResult bindingResult) {
       if (bindingResult.hasErrors()) {
          List<FieldError> fieldErrors = bindingResult.getFieldErrors();
          log.error("error field is : {} ,message is : {}", fieldErrors.get(0).getField(), fieldErrors.get(0).getDefaultMessage());
