@@ -64,8 +64,8 @@ public class UserController {
         log.info("[[loginFromWeixinMiniprogram]]");
         log.info("[[weixin jsCode]] ===> {}", jsCode);
 
-        String APPID = "wx7f36f51f11c3b477";
-        String APPSECRET = "05bc8b625c75a904397907c94839e2b1";
+        String APPID = "wxbe070ab0c4fdfa97";
+        String APPSECRET = "2ead438af888b71e58c89357fb488a5a";
 
         WebClient client = WebClient.create();
         String uri = "https://api.weixin.qq.com/sns/jscode2session?" +
@@ -83,6 +83,12 @@ public class UserController {
         Gson gson = new Gson();
         WxResponseDO wxResponseDO = gson.fromJson(mono.block(), WxResponseDO.class);
         String openid = wxResponseDO.getOpenid();
+
+        if (openid == null) {
+            log.error("openid is null, login failed");
+            throw new Exception("openid is null, login failed");
+        }
+
 
         // 先查找数据库有无此用户
         UserDO find = userService.findUserDOByOpenid(openid);
