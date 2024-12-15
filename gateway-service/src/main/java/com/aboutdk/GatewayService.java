@@ -1,77 +1,46 @@
 package com.aboutdk;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.client.ServiceInstance;
-import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.cloud.gateway.route.RouteLocator;
 import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
 import org.springframework.context.annotation.Bean;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @SpringBootApplication
-@RestController
 public class GatewayService {
-   public static void main(String[] args) {
-      // 应该先启动 note 和 user，然后再启动 gateway
-      SpringApplication.run(GatewayService.class, args);
-   }
+    public static void main(String[] args) {
+        // 确保先启动 Eureka 以及其他微服务（note、user），再启动 gateway
+        SpringApplication.run(GatewayService.class, args);
+    }
 
-   @Autowired
-   private DiscoveryClient discoveryClient;
+    @Bean
+    public RouteLocator customRouteLocator(RouteLocatorBuilder builder) {
 
-   @Bean
-   public RouteLocator myRoutes(RouteLocatorBuilder builder) {
+        return builder.routes()
+                .route("note_service", r -> r
+                        .path("/api/note/**")  // 匹配路径 /api/note/**
+                        .uri("lb://NoteApplication"))
+//                        .uri("http://119.23.74.175:8081"))
+//                        .uri("http://localhost:8081"))
 
-      List<String> services = this.discoveryClient.getServices();
-      List<ServiceInstance> instances = new ArrayList<ServiceInstance>();
-      services.forEach(serviceName -> {
-         this.discoveryClient.getInstances(serviceName).forEach(instance -> {
-            instances.add(instance);
-         });
-      });
+//              .route("user_service", r -> r
+//                      .path("/api/register/**") // 匹配路径 /api/register/**
+//                      .uri("lb://UserApplication")) // 同上，指向 UserApplication
 
-      String noteServiceIp = "";
-      String userServiceIp = "";
-      for (int i = 0; i < instances.size(); i++) {
-         ServiceInstance serviceInstance = instances.get(i);
+                .route("snowflakeId_service", r -> r
+                        .path("/snowflake/**") //
+                        .uri("lb://SnowflakeidApplication"))
+//                        .uri("http://119.23.74.175:8082"))
+//                        .uri("http://localhost:8082"))
 
-         String instanceId = serviceInstance.getInstanceId();
-         String[] arr = instanceId.split(":");
-
-         if ("NoteApplication".equalsIgnoreCase(arr[1])) {
-            noteServiceIp = "http://" + arr[0] + ":" + arr[2];
-         }
-         if ("UserApplication".equalsIgnoreCase(arr[1])) {
-            userServiceIp = "http://" + arr[0] + ":" + arr[2];
-         }
-      }
-
-      String finalNoteServiceIp = noteServiceIp;
-      System.out.println("finalNoteServiceIp: " + finalNoteServiceIp);
-
-      String finalUserServiceIp = userServiceIp;
-      System.out.println("finalUserServiceIp: " + finalUserServiceIp);
-
-      return builder.routes()
-              .route(p -> p
-                      .path("/api/note/**")
-                      .uri(finalNoteServiceIp))
-              .route(p -> p
-                      .path("/api/register/**")
-                      .uri(finalUserServiceIp))
-              .route("pc",
-                      r -> r.path("/pc")
-                              .filters(f -> f.rewritePath("/pc", "/pc/index.html"))
-                              .uri("http://localhost"))
-              .route("register",
-                      r -> r.path("/register")
-                              .filters(f -> f.rewritePath("/register", "/register/index.html"))
-                              .uri("http://localhost"))
-              .build();
-   }
+                .route("pc",
+                        r -> r.path("/pc")
+                                .filters(f -> f.rewritePath("/pc", "/pc/index.html"))
+                                .uri("http://localhost"))
+                .route("register",
+                        r -> r.path("/register")
+                                .filters(f -> f.rewritePath("/register", "/register/index.html"))
+                                .uri("http://localhost"))
+                .build();
+    }
 }

@@ -13,32 +13,32 @@ import org.springframework.web.bind.annotation.*;
 @Slf4j
 public class IdController {
 
-   @Autowired
-   private Snowflake snowflake;
+    @Autowired
+    private Snowflake snowflake;
 
-   @Autowired
-   private SnowflakeIDServiceImpl snowflakeIDService;
+    @Autowired
+    private SnowflakeIDServiceImpl snowflakeIDService;
 
-   @GetMapping("/id")
-   public ResponseEntity<Object> generateSnowflakeId(
-           @RequestHeader(value = "username", defaultValue = "_") String username,
-           @RequestHeader(value = "action") String action) throws Exception {
+    @GetMapping("/id")
+    public ResponseEntity<Object> generateSnowflakeId(
+            @RequestHeader(value = "username", defaultValue = "_") String username,
+            @RequestHeader(value = "action") String action) throws Exception {
 
-      if ("addNote".equals(action) || "register".equals(action)) {
-         // continue;
-      } else {
-         return new ResponseEntity<>("header action must be addNote or register", HttpStatus.BAD_REQUEST);
-      }
+        if ("addNote".equals(action) || "register".equals(action)) {
+            // continue;
+        } else {
+            return new ResponseEntity<>("header action must be addNote or register", HttpStatus.BAD_REQUEST);
+        }
 
-      long id = snowflake.nextId();
-      snowflakeIDService.addID(id, username, action);
+        long id = snowflake.nextId();
+        snowflakeIDService.addID(id, username, action);
 
-      return new ResponseEntity<>(id, HttpStatus.OK);
-   }
+        return new ResponseEntity<>(id, HttpStatus.OK);
+    }
 
-   @PostMapping("/parse/{id}")
-   public long[] parseSnowflakeId(@PathVariable long id) {
-      long[] parse = snowflake.parse(id);
-      return parse;
-   }
+    @PostMapping("/parse/{id}")
+    public long[] parseSnowflakeId(@PathVariable long id) {
+        long[] parse = snowflake.parse(id);
+        return parse;
+    }
 }

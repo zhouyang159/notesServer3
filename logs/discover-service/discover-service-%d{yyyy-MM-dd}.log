@@ -1,0 +1,153 @@
+2024-12-05 21:50:21.221  INFO 13388 --- [main] com.aboutdk.DiscoveryApplication         : Starting DiscoveryApplication using Java 1.8.0_392 on AnthonyPC with PID 13388 (C:\Users\zhouy\Desktop\notesServer3\discovery-service\target\classes started by zhouy in C:\Users\zhouy\Desktop\notesServer3)
+2024-12-05 21:50:21.226  INFO 13388 --- [main] com.aboutdk.DiscoveryApplication         : No active profile set, falling back to 1 default profile: "default"
+2024-12-05 21:50:21.943  INFO 13388 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=f8b6d4a1-4084-330c-b0e3-d84223d7a57b
+2024-12-05 21:50:22.128  INFO 13388 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8761 (http)
+2024-12-05 21:50:22.135  INFO 13388 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-12-05 21:50:22.135  INFO 13388 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.60]
+2024-12-05 21:50:22.214  INFO 13388 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-12-05 21:50:22.214  INFO 13388 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 953 ms
+2024-12-05 21:50:22.534  INFO 13388 --- [main] c.s.j.s.i.a.WebApplicationImpl           : Initiating Jersey application, version 'Jersey: 1.19.4 05/24/2017 03:20 PM'
+2024-12-05 21:50:22.602  INFO 13388 --- [main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON encoding codec LegacyJacksonJson
+2024-12-05 21:50:22.604  INFO 13388 --- [main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON decoding codec LegacyJacksonJson
+2024-12-05 21:50:22.771  INFO 13388 --- [main] c.n.d.provider.DiscoveryJerseyProvider   : Using XML encoding codec XStreamXml
+2024-12-05 21:50:22.771  INFO 13388 --- [main] c.n.d.provider.DiscoveryJerseyProvider   : Using XML decoding codec XStreamXml
+2024-12-05 21:50:24.342  INFO 13388 --- [main] DiscoveryClientOptionalArgsConfiguration : Eureka HTTP Client uses Jersey
+2024-12-05 21:50:24.379  WARN 13388 --- [main] iguration$LoadBalancerCaffeineWarnLogger : Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2024-12-05 21:50:24.394  INFO 13388 --- [main] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2024-12-05 21:50:24.414  INFO 13388 --- [main] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+2024-12-05 21:50:24.414  INFO 13388 --- [main] com.netflix.discovery.DiscoveryClient    : Client configured to neither register nor query for data.
+2024-12-05 21:50:24.417  INFO 13388 --- [main] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1733406624417 with initial instances count: 0
+2024-12-05 21:50:24.448  INFO 13388 --- [main] c.n.eureka.DefaultEurekaServerContext    : Initializing ...
+2024-12-05 21:50:24.450  INFO 13388 --- [main] c.n.eureka.cluster.PeerEurekaNodes       : Adding new peer nodes [http://localhost:8761/eureka/]
+2024-12-05 21:50:24.541  INFO 13388 --- [main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON encoding codec LegacyJacksonJson
+2024-12-05 21:50:24.541  INFO 13388 --- [main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON decoding codec LegacyJacksonJson
+2024-12-05 21:50:24.541  INFO 13388 --- [main] c.n.d.provider.DiscoveryJerseyProvider   : Using XML encoding codec XStreamXml
+2024-12-05 21:50:24.541  INFO 13388 --- [main] c.n.d.provider.DiscoveryJerseyProvider   : Using XML decoding codec XStreamXml
+2024-12-05 21:50:24.634  INFO 13388 --- [main] c.n.eureka.cluster.PeerEurekaNodes       : Replica node URL:  http://localhost:8761/eureka/
+2024-12-05 21:50:24.643  INFO 13388 --- [main] c.n.e.registry.AbstractInstanceRegistry  : Finished initializing remote region registries. All known remote regions: []
+2024-12-05 21:50:24.644  INFO 13388 --- [main] c.n.eureka.DefaultEurekaServerContext    : Initialized
+2024-12-05 21:50:24.654  INFO 13388 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2024-12-05 21:50:24.716  INFO 13388 --- [main] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application UNKNOWN with eureka with status UP
+2024-12-05 21:50:24.727  INFO 13388 --- [Thread-18] o.s.c.n.e.server.EurekaServerBootstrap   : isAws returned false
+2024-12-05 21:50:24.727  INFO 13388 --- [Thread-18] o.s.c.n.e.server.EurekaServerBootstrap   : Initialized server context
+2024-12-05 21:50:24.727  INFO 13388 --- [Thread-18] c.n.e.r.PeerAwareInstanceRegistryImpl    : Got 1 instances from neighboring DS node
+2024-12-05 21:50:24.728  INFO 13388 --- [Thread-18] c.n.e.r.PeerAwareInstanceRegistryImpl    : Renew threshold is: 1
+2024-12-05 21:50:24.728  INFO 13388 --- [Thread-18] c.n.e.r.PeerAwareInstanceRegistryImpl    : Changing status to UP
+2024-12-05 21:50:24.735  INFO 13388 --- [Thread-18] e.s.EurekaServerInitializerConfiguration : Started Eureka Server
+2024-12-05 21:50:24.736  INFO 13388 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8761 (http) with context path ''
+2024-12-05 21:50:24.736  INFO 13388 --- [main] .s.c.n.e.s.EurekaAutoServiceRegistration : Updating port to 8761
+2024-12-05 21:50:25.200  INFO 13388 --- [main] com.aboutdk.DiscoveryApplication         : Started DiscoveryApplication in 5.063 seconds (JVM running for 5.971)
+2024-12-05 21:50:26.014  INFO 13388 --- [RMI TCP Connection(3)-192.168.0.100] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-12-05 21:50:26.014  INFO 13388 --- [RMI TCP Connection(3)-192.168.0.100] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-12-05 21:50:26.015  INFO 13388 --- [RMI TCP Connection(3)-192.168.0.100] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-12-05 21:51:24.740  INFO 13388 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 0ms
+2024-12-05 21:52:07.843  INFO 13388 --- [http-nio-8761-exec-1] c.n.e.registry.AbstractInstanceRegistry  : Registered instance NOTEAPPLICATION/AnthonyPC:NoteApplication:8081 with status UP (replication=false)
+2024-12-05 21:52:08.435  INFO 13388 --- [http-nio-8761-exec-2] c.n.e.registry.AbstractInstanceRegistry  : Registered instance NOTEAPPLICATION/AnthonyPC:NoteApplication:8081 with status UP (replication=true)
+2024-12-05 21:52:24.748  INFO 13388 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 7ms
+2024-12-05 21:53:11.586  INFO 13388 --- [http-nio-8761-exec-9] c.n.e.registry.AbstractInstanceRegistry  : Registered instance SNOWFLAKEIDAPPLICATION/AnthonyPC:SnowflakeidApplication:8082 with status UP (replication=false)
+2024-12-05 21:53:12.117  INFO 13388 --- [http-nio-8761-exec-1] c.n.e.registry.AbstractInstanceRegistry  : Registered instance SNOWFLAKEIDAPPLICATION/AnthonyPC:SnowflakeidApplication:8082 with status UP (replication=true)
+2024-12-05 21:53:24.764  INFO 13388 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 15ms
+2024-12-05 21:54:24.777  INFO 13388 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 13ms
+2024-12-05 21:54:32.620  INFO 13388 --- [http-nio-8761-exec-6] c.n.e.registry.AbstractInstanceRegistry  : Registered instance GATEWAYSERVICE/AnthonyPC:GatewayService:90 with status UP (replication=false)
+2024-12-05 21:54:33.149  INFO 13388 --- [http-nio-8761-exec-8] c.n.e.registry.AbstractInstanceRegistry  : Registered instance GATEWAYSERVICE/AnthonyPC:GatewayService:90 with status UP (replication=true)
+2024-12-05 21:55:24.782  INFO 13388 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 3ms
+2024-12-05 21:56:24.784  INFO 13388 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 2ms
+2024-12-05 21:57:24.795  INFO 13388 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 10ms
+2024-12-05 21:58:24.798  INFO 13388 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 2ms
+2024-12-05 21:59:24.800  INFO 13388 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 2ms
+2024-12-05 22:00:24.802  INFO 13388 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 2ms
+2024-12-05 22:01:24.814  INFO 13388 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 11ms
+2024-12-05 22:02:24.819  INFO 13388 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 5ms
+2024-12-05 22:03:24.834  INFO 13388 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 14ms
+2024-12-05 22:04:24.834  INFO 13388 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 0ms
+2024-12-05 22:05:24.653  INFO 13388 --- [ReplicaAwareInstanceRegistry - RenewalThresholdUpdater] c.n.e.r.PeerAwareInstanceRegistryImpl    : Current renewal threshold is : 6
+2024-12-05 22:05:24.837  INFO 13388 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 1ms
+2024-12-05 22:06:24.844  INFO 13388 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 7ms
+2024-12-05 22:07:24.847  INFO 13388 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 2ms
+2024-12-05 22:08:24.850  INFO 13388 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 4ms
+2024-12-05 22:09:24.860  INFO 13388 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 9ms
+2024-12-05 22:10:24.861  INFO 13388 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 1ms
+2024-12-05 22:10:36.061  INFO 13388 --- [http-nio-8761-exec-6] c.n.e.registry.AbstractInstanceRegistry  : Registered instance NOTEAPPLICATION/AnthonyPC:NoteApplication:8081 with status DOWN (replication=false)
+2024-12-05 22:10:36.594  INFO 13388 --- [http-nio-8761-exec-7] c.n.e.registry.AbstractInstanceRegistry  : Registered instance NOTEAPPLICATION/AnthonyPC:NoteApplication:8081 with status DOWN (replication=true)
+2024-12-05 22:10:39.520  INFO 13388 --- [http-nio-8761-exec-5] c.n.e.registry.AbstractInstanceRegistry  : Cancelled instance NOTEAPPLICATION/AnthonyPC:NoteApplication:8081 (replication=false)
+2024-12-05 22:10:40.045  WARN 13388 --- [http-nio-8761-exec-4] c.n.e.registry.AbstractInstanceRegistry  : DS: Registry: cancel failed because Lease is not registered for: NOTEAPPLICATION/AnthonyPC:NoteApplication:8081
+2024-12-05 22:10:40.045  INFO 13388 --- [http-nio-8761-exec-4] c.n.eureka.resources.InstanceResource    : Not Found (Cancel): NOTEAPPLICATION - AnthonyPC:NoteApplication:8081
+2024-12-05 22:10:40.046  WARN 13388 --- [TaskBatchingWorker-target_localhost-6] c.n.eureka.cluster.ReplicationTask       : The replication of task NOTEAPPLICATION/AnthonyPC:NoteApplication:8081:Cancel@localhost failed with response code 404
+2024-12-05 22:10:40.047  WARN 13388 --- [TaskBatchingWorker-target_localhost-6] c.netflix.eureka.cluster.PeerEurekaNode  : NOTEAPPLICATION/AnthonyPC:NoteApplication:8081:Cancel@localhost: missing entry.
+2024-12-05 22:10:42.663  INFO 13388 --- [http-nio-8761-exec-1] c.n.e.registry.AbstractInstanceRegistry  : Registered instance NOTEAPPLICATION/AnthonyPC:NoteApplication:8081 with status UP (replication=false)
+2024-12-05 22:10:42.979  INFO 13388 --- [http-nio-8761-exec-10] c.n.e.registry.AbstractInstanceRegistry  : Registered instance NOTEAPPLICATION/AnthonyPC:NoteApplication:8081 with status UP (replication=true)
+2024-12-05 22:10:45.948  INFO 13388 --- [http-nio-8761-exec-8] c.n.e.registry.AbstractInstanceRegistry  : Registered instance NOTEAPPLICATION/AnthonyPC:NoteApplication:8081 with status DOWN (replication=false)
+2024-12-05 22:10:46.478  INFO 13388 --- [http-nio-8761-exec-5] c.n.e.registry.AbstractInstanceRegistry  : Registered instance NOTEAPPLICATION/AnthonyPC:NoteApplication:8081 with status DOWN (replication=true)
+2024-12-05 22:10:49.280  INFO 13388 --- [http-nio-8761-exec-2] c.n.e.registry.AbstractInstanceRegistry  : Cancelled instance NOTEAPPLICATION/AnthonyPC:NoteApplication:8081 (replication=false)
+2024-12-05 22:10:49.809  WARN 13388 --- [http-nio-8761-exec-9] c.n.e.registry.AbstractInstanceRegistry  : DS: Registry: cancel failed because Lease is not registered for: NOTEAPPLICATION/AnthonyPC:NoteApplication:8081
+2024-12-05 22:10:49.810  INFO 13388 --- [http-nio-8761-exec-9] c.n.eureka.resources.InstanceResource    : Not Found (Cancel): NOTEAPPLICATION - AnthonyPC:NoteApplication:8081
+2024-12-05 22:10:49.811  WARN 13388 --- [TaskBatchingWorker-target_localhost-3] c.n.eureka.cluster.ReplicationTask       : The replication of task NOTEAPPLICATION/AnthonyPC:NoteApplication:8081:Cancel@localhost failed with response code 404
+2024-12-05 22:10:49.811  WARN 13388 --- [TaskBatchingWorker-target_localhost-3] c.netflix.eureka.cluster.PeerEurekaNode  : NOTEAPPLICATION/AnthonyPC:NoteApplication:8081:Cancel@localhost: missing entry.
+2024-12-05 22:10:58.444  INFO 13388 --- [http-nio-8761-exec-7] c.n.e.registry.AbstractInstanceRegistry  : Registered instance NOTEAPPLICATION/AnthonyPC:NoteApplication:8081 with status UP (replication=false)
+2024-12-05 22:10:58.976  INFO 13388 --- [http-nio-8761-exec-1] c.n.e.registry.AbstractInstanceRegistry  : Registered instance NOTEAPPLICATION/AnthonyPC:NoteApplication:8081 with status UP (replication=true)
+2024-12-05 22:11:24.876  INFO 13388 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 15ms
+2024-12-05 22:12:24.879  INFO 13388 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 3ms
+2024-12-05 22:12:26.201  INFO 13388 --- [http-nio-8761-exec-1] c.n.e.registry.AbstractInstanceRegistry  : Registered instance NOTEAPPLICATION/AnthonyPC:NoteApplication:8081 with status DOWN (replication=false)
+2024-12-05 22:12:26.731  INFO 13388 --- [http-nio-8761-exec-8] c.n.e.registry.AbstractInstanceRegistry  : Registered instance NOTEAPPLICATION/AnthonyPC:NoteApplication:8081 with status DOWN (replication=true)
+2024-12-05 22:12:29.555  INFO 13388 --- [http-nio-8761-exec-4] c.n.e.registry.AbstractInstanceRegistry  : Cancelled instance NOTEAPPLICATION/AnthonyPC:NoteApplication:8081 (replication=false)
+2024-12-05 22:12:30.077  WARN 13388 --- [http-nio-8761-exec-9] c.n.e.registry.AbstractInstanceRegistry  : DS: Registry: cancel failed because Lease is not registered for: NOTEAPPLICATION/AnthonyPC:NoteApplication:8081
+2024-12-05 22:12:30.078  INFO 13388 --- [http-nio-8761-exec-9] c.n.eureka.resources.InstanceResource    : Not Found (Cancel): NOTEAPPLICATION - AnthonyPC:NoteApplication:8081
+2024-12-05 22:12:30.079  WARN 13388 --- [TaskBatchingWorker-target_localhost-16] c.n.eureka.cluster.ReplicationTask       : The replication of task NOTEAPPLICATION/AnthonyPC:NoteApplication:8081:Cancel@localhost failed with response code 404
+2024-12-05 22:12:30.079  WARN 13388 --- [TaskBatchingWorker-target_localhost-16] c.netflix.eureka.cluster.PeerEurekaNode  : NOTEAPPLICATION/AnthonyPC:NoteApplication:8081:Cancel@localhost: missing entry.
+2024-12-05 22:12:38.425  INFO 13388 --- [http-nio-8761-exec-2] c.n.e.registry.AbstractInstanceRegistry  : Registered instance NOTEAPPLICATION/AnthonyPC:NoteApplication:8081 with status UP (replication=false)
+2024-12-05 22:12:38.943  INFO 13388 --- [http-nio-8761-exec-3] c.n.e.registry.AbstractInstanceRegistry  : Registered instance NOTEAPPLICATION/AnthonyPC:NoteApplication:8081 with status UP (replication=true)
+2024-12-05 22:13:16.720  INFO 13388 --- [http-nio-8761-exec-7] c.n.e.registry.AbstractInstanceRegistry  : Registered instance SNOWFLAKEIDAPPLICATION/AnthonyPC:SnowflakeidApplication:8082 with status DOWN (replication=false)
+2024-12-05 22:13:17.251  INFO 13388 --- [http-nio-8761-exec-6] c.n.e.registry.AbstractInstanceRegistry  : Registered instance SNOWFLAKEIDAPPLICATION/AnthonyPC:SnowflakeidApplication:8082 with status DOWN (replication=true)
+2024-12-05 22:13:20.077  INFO 13388 --- [http-nio-8761-exec-10] c.n.e.registry.AbstractInstanceRegistry  : Cancelled instance SNOWFLAKEIDAPPLICATION/AnthonyPC:SnowflakeidApplication:8082 (replication=false)
+2024-12-05 22:13:20.607  WARN 13388 --- [http-nio-8761-exec-5] c.n.e.registry.AbstractInstanceRegistry  : DS: Registry: cancel failed because Lease is not registered for: SNOWFLAKEIDAPPLICATION/AnthonyPC:SnowflakeidApplication:8082
+2024-12-05 22:13:20.607  INFO 13388 --- [http-nio-8761-exec-5] c.n.eureka.resources.InstanceResource    : Not Found (Cancel): SNOWFLAKEIDAPPLICATION - AnthonyPC:SnowflakeidApplication:8082
+2024-12-05 22:13:20.608  WARN 13388 --- [TaskBatchingWorker-target_localhost-8] c.n.eureka.cluster.ReplicationTask       : The replication of task SNOWFLAKEIDAPPLICATION/AnthonyPC:SnowflakeidApplication:8082:Cancel@localhost failed with response code 404
+2024-12-05 22:13:20.608  WARN 13388 --- [TaskBatchingWorker-target_localhost-8] c.netflix.eureka.cluster.PeerEurekaNode  : SNOWFLAKEIDAPPLICATION/AnthonyPC:SnowflakeidApplication:8082:Cancel@localhost: missing entry.
+2024-12-05 22:13:24.885  INFO 13388 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 5ms
+2024-12-05 22:13:27.950  INFO 13388 --- [http-nio-8761-exec-3] c.n.e.registry.AbstractInstanceRegistry  : Registered instance SNOWFLAKEIDAPPLICATION/AnthonyPC:SnowflakeidApplication:8082 with status UP (replication=false)
+2024-12-05 22:13:28.478  INFO 13388 --- [http-nio-8761-exec-4] c.n.e.registry.AbstractInstanceRegistry  : Registered instance SNOWFLAKEIDAPPLICATION/AnthonyPC:SnowflakeidApplication:8082 with status UP (replication=true)
+2024-12-05 22:14:24.896  INFO 13388 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 11ms
+2024-12-05 22:14:48.978  INFO 13388 --- [http-nio-8761-exec-2] c.n.e.registry.AbstractInstanceRegistry  : Registered instance SNOWFLAKEIDAPPLICATION/AnthonyPC:SnowflakeidApplication:8082 with status DOWN (replication=false)
+2024-12-05 22:14:49.506  INFO 13388 --- [http-nio-8761-exec-5] c.n.e.registry.AbstractInstanceRegistry  : Registered instance SNOWFLAKEIDAPPLICATION/AnthonyPC:SnowflakeidApplication:8082 with status DOWN (replication=true)
+2024-12-05 22:14:52.357  INFO 13388 --- [http-nio-8761-exec-3] c.n.e.registry.AbstractInstanceRegistry  : Cancelled instance SNOWFLAKEIDAPPLICATION/AnthonyPC:SnowflakeidApplication:8082 (replication=false)
+2024-12-05 22:14:52.889  WARN 13388 --- [http-nio-8761-exec-7] c.n.e.registry.AbstractInstanceRegistry  : DS: Registry: cancel failed because Lease is not registered for: SNOWFLAKEIDAPPLICATION/AnthonyPC:SnowflakeidApplication:8082
+2024-12-05 22:14:52.890  INFO 13388 --- [http-nio-8761-exec-7] c.n.eureka.resources.InstanceResource    : Not Found (Cancel): SNOWFLAKEIDAPPLICATION - AnthonyPC:SnowflakeidApplication:8082
+2024-12-05 22:14:52.891  WARN 13388 --- [TaskBatchingWorker-target_localhost-19] c.n.eureka.cluster.ReplicationTask       : The replication of task SNOWFLAKEIDAPPLICATION/AnthonyPC:SnowflakeidApplication:8082:Cancel@localhost failed with response code 404
+2024-12-05 22:14:52.891  WARN 13388 --- [TaskBatchingWorker-target_localhost-19] c.netflix.eureka.cluster.PeerEurekaNode  : SNOWFLAKEIDAPPLICATION/AnthonyPC:SnowflakeidApplication:8082:Cancel@localhost: missing entry.
+2024-12-05 22:15:00.119  INFO 13388 --- [http-nio-8761-exec-10] c.n.e.registry.AbstractInstanceRegistry  : Registered instance SNOWFLAKEIDAPPLICATION/AnthonyPC:SnowflakeidApplication:8082 with status UP (replication=false)
+2024-12-05 22:15:00.639  INFO 13388 --- [http-nio-8761-exec-6] c.n.e.registry.AbstractInstanceRegistry  : Registered instance SNOWFLAKEIDAPPLICATION/AnthonyPC:SnowflakeidApplication:8082 with status UP (replication=true)
+2024-12-05 22:15:24.907  INFO 13388 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 11ms
+2024-12-05 22:16:24.915  INFO 13388 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 7ms
+2024-12-05 22:17:24.924  INFO 13388 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 9ms
+2024-12-05 22:18:24.937  INFO 13388 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 13ms
+2024-12-05 22:19:24.949  INFO 13388 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 11ms
+2024-12-05 22:20:24.661  INFO 13388 --- [ReplicaAwareInstanceRegistry - RenewalThresholdUpdater] c.n.e.r.PeerAwareInstanceRegistryImpl    : Current renewal threshold is : 6
+2024-12-05 22:20:24.958  INFO 13388 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 9ms
+2024-12-05 22:21:24.969  INFO 13388 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 10ms
+2024-12-05 22:22:24.972  INFO 13388 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 2ms
+2024-12-05 22:23:24.978  INFO 13388 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 5ms
+2024-12-05 22:23:59.397  INFO 13388 --- [http-nio-8761-exec-7] c.n.e.registry.AbstractInstanceRegistry  : Registered instance NOTEAPPLICATION/AnthonyPC:NoteApplication:8081 with status DOWN (replication=false)
+2024-12-05 22:23:59.924  INFO 13388 --- [http-nio-8761-exec-10] c.n.e.registry.AbstractInstanceRegistry  : Registered instance NOTEAPPLICATION/AnthonyPC:NoteApplication:8081 with status DOWN (replication=true)
+2024-12-05 22:24:02.983  INFO 13388 --- [http-nio-8761-exec-5] c.n.e.registry.AbstractInstanceRegistry  : Cancelled instance NOTEAPPLICATION/AnthonyPC:NoteApplication:8081 (replication=false)
+2024-12-05 22:24:03.511  WARN 13388 --- [http-nio-8761-exec-9] c.n.e.registry.AbstractInstanceRegistry  : DS: Registry: cancel failed because Lease is not registered for: NOTEAPPLICATION/AnthonyPC:NoteApplication:8081
+2024-12-05 22:24:03.512  INFO 13388 --- [http-nio-8761-exec-9] c.n.eureka.resources.InstanceResource    : Not Found (Cancel): NOTEAPPLICATION - AnthonyPC:NoteApplication:8081
+2024-12-05 22:24:03.513  WARN 13388 --- [TaskBatchingWorker-target_localhost-11] c.n.eureka.cluster.ReplicationTask       : The replication of task NOTEAPPLICATION/AnthonyPC:NoteApplication:8081:Cancel@localhost failed with response code 404
+2024-12-05 22:24:03.513  WARN 13388 --- [TaskBatchingWorker-target_localhost-11] c.netflix.eureka.cluster.PeerEurekaNode  : NOTEAPPLICATION/AnthonyPC:NoteApplication:8081:Cancel@localhost: missing entry.
+2024-12-05 22:24:24.979  INFO 13388 --- [Eureka-EvictionTimer] c.n.e.registry.AbstractInstanceRegistry  : Running the evict task with compensationTime 1ms
+2024-12-05 22:24:39.514  WARN 13388 --- [http-nio-8761-exec-7] c.n.e.registry.AbstractInstanceRegistry  : DS: Registry: lease doesn't exist, registering resource: NOTEAPPLICATION - AnthonyPC:NoteApplication:8081
+2024-12-05 22:24:39.515  WARN 13388 --- [http-nio-8761-exec-7] c.n.eureka.resources.InstanceResource    : Not Found (Renew): NOTEAPPLICATION - AnthonyPC:NoteApplication:8081
+2024-12-05 22:24:59.339  INFO 13388 --- [SpringApplicationShutdownHook] o.s.c.n.e.s.EurekaServiceRegistry        : Unregistering application UNKNOWN with eureka with status DOWN
+2024-12-05 22:24:59.492  INFO 13388 --- [http-nio-8761-exec-5] c.n.e.registry.AbstractInstanceRegistry  : Registered instance SNOWFLAKEIDAPPLICATION/AnthonyPC:SnowflakeidApplication:8082 with status DOWN (replication=false)
+2024-12-05 22:24:59.739  INFO 13388 --- [http-nio-8761-exec-8] c.n.e.registry.AbstractInstanceRegistry  : Registered instance GATEWAYSERVICE/AnthonyPC:GatewayService:90 with status DOWN (replication=false)
+2024-12-05 22:24:59.820  INFO 13388 --- [SpringApplicationShutdownHook] o.s.c.n.e.server.EurekaServerBootstrap   : Shutting down Eureka Server..
+2024-12-05 22:24:59.824  INFO 13388 --- [SpringApplicationShutdownHook] c.n.eureka.DefaultEurekaServerContext    : Shutting down ...
+2024-12-05 22:24:59.826  INFO 13388 --- [SpringApplicationShutdownHook] com.netflix.servo.monitor.StatsMonitor   : Attempting to get the value for an expired monitor: eurekaServer.replication.batchSize.Will start computing stats again.
+2024-12-05 22:24:59.829  INFO 13388 --- [SpringApplicationShutdownHook] com.netflix.servo.monitor.StatsMonitor   : Attempting to get the value for an expired monitor: eurekaServer.replication.executionTime.Will start computing stats again.
+2024-12-05 22:24:59.829  INFO 13388 --- [SpringApplicationShutdownHook] com.netflix.servo.monitor.StatsMonitor   : Attempting to get the value for an expired monitor: eurekaServer.replication.executionTime.Will start computing stats again.
+2024-12-05 22:24:59.830  INFO 13388 --- [SpringApplicationShutdownHook] com.netflix.servo.monitor.StatsMonitor   : Attempting to get the value for an expired monitor: eurekaServer.replication.batchSize.Will start computing stats again.
+2024-12-05 22:24:59.838  INFO 13388 --- [SpringApplicationShutdownHook] c.n.eureka.DefaultEurekaServerContext    : Shut down
+2024-12-05 22:24:59.838  INFO 13388 --- [SpringApplicationShutdownHook] o.s.c.n.e.server.EurekaServerBootstrap   : Eureka Service is now shutdown...
+2024-12-05 22:24:59.838  INFO 13388 --- [SpringApplicationShutdownHook] c.n.eureka.DefaultEurekaServerContext    : Shutting down ...
+2024-12-05 22:24:59.841  INFO 13388 --- [SpringApplicationShutdownHook] c.n.eureka.DefaultEurekaServerContext    : Shut down
+2024-12-05 22:24:59.847  INFO 13388 --- [SpringApplicationShutdownHook] com.netflix.discovery.DiscoveryClient    : Shutting down DiscoveryClient ...
+2024-12-05 22:24:59.847  INFO 13388 --- [SpringApplicationShutdownHook] com.netflix.discovery.DiscoveryClient    : Completed shut down of DiscoveryClient

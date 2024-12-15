@@ -36,15 +36,6 @@ public class NoteController extends Thread {
    @Autowired
    private TokenService tokenService;
 
-   private Map<String, Timer> timerMap = new HashMap<>();
-
-   @Override
-   public void run() {
-      for (int i = 0; i < 10; i++) {
-         System.out.println("方式一-->" + i);
-      }
-   }
-
    @GetMapping("/findAll")
    public ResponseVO<List<NoteVO>> findAll(@RequestHeader HttpHeaders headers) {
       log.info("fetch notes");
@@ -185,7 +176,8 @@ public class NoteController extends Thread {
    此接口只提供修改 liveNoteList 排序的能力，也就是只修改 number 字段，不修改其他字段
     */
    @PutMapping("/updateLiveNoteList")
-   public ResponseVO updateLiveNoteList(@RequestBody List<NoteForm> formList, @RequestHeader HttpHeaders headers) throws Exception {
+   public ResponseVO updateLiveNoteList(@RequestBody List<NoteForm> formList,
+                                        @RequestHeader HttpHeaders headers) throws Exception {
       // validate formList number
       for (int i = 0; i < formList.size(); i++) {
          NoteForm cur = formList.get(i);
@@ -230,7 +222,8 @@ public class NoteController extends Thread {
    }
 
    @DeleteMapping("/toTrash/{fakeDeleteId}")
-   public ResponseVO fakeDelete(@PathVariable String fakeDeleteId, @RequestHeader HttpHeaders headers) {
+   public ResponseVO fakeDelete(@PathVariable String fakeDeleteId,
+                                @RequestHeader HttpHeaders headers) {
       log.info("fake delete note: {}", fakeDeleteId);
       String curUser = tokenService.getUsername(headers.getFirst("token"));
 
@@ -276,7 +269,8 @@ public class NoteController extends Thread {
    }
 
    @DeleteMapping("/{noteId}")
-   public ResponseVO delete(@PathVariable String noteId, @RequestHeader HttpHeaders headers) {
+   public ResponseVO delete(@PathVariable String noteId,
+                            @RequestHeader HttpHeaders headers) {
       log.info("delete note: {}", noteId);
       String curUser = tokenService.getUsername(headers.getFirst("token"));
       NoteDO noteDO = noteService.deleteNote(curUser, noteId);
