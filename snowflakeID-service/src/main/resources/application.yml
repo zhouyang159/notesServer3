@@ -9,7 +9,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: dk
     password: 159357123Ab
-    url: jdbc:mysql://rm-cn-o493yvvyr0005meo.rwlb.rds.aliyuncs.com:3306/notes230412?characterEncoding=utf-8&useSSL=false&allowPublicKeyRetrieval=true
+    url: ${global.dbUrl}
 
 
 server:
@@ -17,15 +17,21 @@ server:
 
 eureka:
   instance:
-    ip-address: 119.23.74.175
-    hostname: 119.23.74.175
-    home-page-url: http://119.23.74.175:8082/
-    health-check-url: http://119.23.74.175:8082/actuator/health
-    status-page-url: http://119.23.74.175:8082/actuator/info
+    ip-address: localhost
+    hostname: localhost
+    home-page-url: http://localhost:8082/
+    health-check-url: http://localhost:8082/actuator/health
+    status-page-url: http://localhost:8082/actuator/info
+
+  #    ip-address: 119.23.74.175
+  #    hostname: 119.23.74.175
+  #    home-page-url: http://119.23.74.175:8082/
+  #    health-check-url: http://119.23.74.175:8082/actuator/health
+  #    status-page-url: http://119.23.74.175:8082/actuator/info
   client:
     service-url:
-      #      defaultZone: http://localhost:8761/eureka/
-      defaultZone: http://114.132.189.139:8761/eureka/
+      defaultZone: http://localhost:8761/eureka/
+#      defaultZone: http://114.132.189.139:8761/eureka/
 
 logging:
   file:
