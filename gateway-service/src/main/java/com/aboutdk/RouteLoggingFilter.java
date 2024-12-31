@@ -2,8 +2,12 @@ package com.aboutdk;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
+import org.springframework.cloud.gateway.route.RouteDefinitionLocator;
+import org.springframework.context.ApplicationListener;
+import org.springframework.context.annotation.Bean;
 import org.springframework.core.Ordered;
 import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.stereotype.Component;
@@ -35,5 +39,11 @@ public class RouteLoggingFilter implements GlobalFilter, Ordered {
     public int getOrder() {
         // 设置过滤器执行顺序，这里设置一个合适的顺序值，例如可以设为一个较小的值让它较早执行
         return -1;
+    }
+
+    @Bean
+    public ApplicationListener<ApplicationReadyEvent> logRoutes(RouteDefinitionLocator routeDefinitionLocator) {
+        return event -> routeDefinitionLocator.getRouteDefinitions()
+                .subscribe(routeDefinition -> logger.info("Loaded route: {}", routeDefinition));
     }
 }

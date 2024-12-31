@@ -14,20 +14,9 @@ spring:
     url: ${global.dbUrl}
 
 server:
-  port: 8081
+  port: 8083
   servlet:
     context-path: /api/register
-
-eureka:
-  client:
-    service-url:
-      # 指定 Eureka 服务的地址 (替换为你的 Eureka 服务地址)
-      defaultZone: http://114.132.189.139:8761/eureka/
-    register-with-eureka: true   # 是否向 Eureka 注册服务，默认 true
-    fetch-registry: true         # 是否从 Eureka 获取注册表信息，默认 true
-  instance:
-    prefer-ip-address: true      # 是否优先使用 IP 地址作为服务注册时的主机名
-    instance-id: ${spring.application.name}:${spring.cloud.client.hostname}:${server.port} # 实例唯一标识
 
 
 logging:

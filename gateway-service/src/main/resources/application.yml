@@ -1,22 +1,3 @@
-spring:
-  application:
-    name: GatewayService
-  cloud:
-    gateway:
-      discovery:
-        locator:
-          enabled: true  # 启用通过 Eureka 动态发现路由
-
-eureka:
-  instance:
-    prefer-ip-address: true
-    ip-address: localhost
-  #    ip-address: 114.132.189.139
-  client:
-    service-url:
-      defaultZone: http://localhost:8761/eureka/
-#      defaultZone: http://114.132.189.139:8761/eureka/
-
 server:
   port: 90
 #  port: 443    #HTTPS协议默认端口号为443，需要使用其他端口时，您可以在此处自定义。
@@ -25,7 +6,22 @@ server:
 #    key-store-type: JKS #JKS格式证书密钥库类型。PFX格式的证书密钥库类型为PKCS12。
 #    key-store: classpath:aboutdk.cn.jks   #您需要使用实际的证书名称替换domain_name.jks。
 
-
+spring:
+  application:
+    name: GatewayService
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: NoteApplication
+          uri: http://localhost:8081
+          predicates:
+            - Path=/api/note/**
 
 logging:
   logback:
@@ -36,6 +32,7 @@ logging:
     path: ./logs
   level:
     org.springframework.cloud.gateway: DEBUG
-    org.springframework.cloud.netflix.eureka: DEBUG
-
+    org.springframework.cloud.gateway.route: DEBUG
+    org.springframework.cloud.gateway.route.builder: DEBUG
+    org.springframework.cloud.gateway.route.RouteDefinitionRouteLocator: DEBUG
 

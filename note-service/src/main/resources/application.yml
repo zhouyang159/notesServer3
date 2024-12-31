@@ -1,6 +1,10 @@
 spring:
   application:
     name: NoteApplication
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
   main:
     web-application-type: servlet
   jackson:
@@ -23,21 +27,4 @@ logging:
     name: ./logs/Note/Note-%d{yyyy-MM-dd}.log
     path: ./logs
 
-eureka:
-  instance:
-    ip-address: localhost
-    hostname: localhost
-    home-page-url: http://localhost:8081/
-    health-check-url: http://localhost:8081/api/note/actuator/health
-    status-page-url: http://localhost:8081/api/note/actuator/info
-
-  #    ip-address: 119.23.74.175
-  #    hostname: 119.23.74.175
-  #    home-page-url: http://119.23.74.175:8081/
-  #    health-check-url: http://119.23.74.175:8081/api/note/actuator/health
-  #    status-page-url: http://119.23.74.175:8081/api/note/actuator/info
-  client:
-    service-url:
-      defaultZone: http://localhost:8761/eureka/
-#      defaultZone: http://114.132.189.139:8761/eureka/
 

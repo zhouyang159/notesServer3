@@ -45,11 +45,6 @@ public class NoteServiceImpl extends ServiceImpl<NoteMapper, NoteDO> implements 
     }
 
     @Override
-    public NoteDO findById(String id) {
-        return noteMapper.selectById(id);
-    }
-
-    @Override
     @Transactional
     public NoteDO addNote(String username, NoteForm form) {
         // update all note's number first
@@ -64,10 +59,7 @@ public class NoteServiceImpl extends ServiceImpl<NoteMapper, NoteDO> implements 
                         return false;
                     }
                 })
-                .map(note -> {
-                    note.setNumber(note.getNumber() + 1);
-                    return note;
-                })
+                .peek(note -> note.setNumber(note.getNumber() + 1))
                 .collect(Collectors.toList());
 
         CompletableFuture<Boolean> updateFuture = CompletableFuture.supplyAsync(() ->
@@ -105,9 +97,9 @@ public class NoteServiceImpl extends ServiceImpl<NoteMapper, NoteDO> implements 
     public NoteDO realUpdateNote(String username,
                                  NoteForm form,
                                  Boolean refreshUpdateTime) {
-        this.validateNote(username, form.getId());
+        NoteDO update = noteMapper.selectById(form.getId());
+        this.validateNote(username, update);
 
-        NoteDO update = this.findById(form.getId());
         BeanUtils.copyProperties(form, update);
 
         if (update.getDeleted().equals(DELETED_NOTE)) {
@@ -121,30 +113,32 @@ public class NoteServiceImpl extends ServiceImpl<NoteMapper, NoteDO> implements 
         if (refreshUpdateTime) {
             update.setUpdateTime(LocalDateTime.now());
         }
-        noteMapper.updateById(update);
 
-        return noteMapper.selectById(update.getId());
+        int rowsAffected = noteMapper.updateById(update);
+        if (rowsAffected == 0) {
+            throw new RuntimeException("Update failed for note with id " + update.getId());
+        }
+
+        return update;
     }
 
     @Override
     public NoteDO deleteNote(String username, String noteId) {
-        this.validateNote(username, noteId);
-
         NoteDO deleteNoteDO = noteMapper.selectById(noteId);
+        this.validateNote(username, deleteNoteDO);
+
         deleteNoteDO.setDeleteForever(true);
         noteMapper.updateById(deleteNoteDO);
 
         return deleteNoteDO;
     }
 
-    private void validateNote(String username, String noteId) {
-
-        NoteDO noteDO = noteMapper.selectById(noteId);
+    private void validateNote(String username, NoteDO noteDO) {
         if (noteDO == null) {
             throw new RuntimeException("note id not exist");
         }
         if (!noteDO.getUsername().equals(username)) {
-            throw new RuntimeException("note with id " + noteId + " is not belong to " + username);
+            throw new RuntimeException("note with id " + noteDO.getId() + " is not belong to " + username);
         }
     }
 

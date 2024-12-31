@@ -5,11 +5,10 @@ import com.aboutdk.note.POJO.DO.NoteDO;
 import com.aboutdk.note.POJO.VO.ResponseVO;
 import com.aboutdk.note.exception.UpdateNoteVersionWrongException;
 import com.aboutdk.note.mapper.mapStructMapper.NoteDOMapper;
+import com.aboutdk.note.mapper.mybatisMapper.NoteMapper;
 import com.aboutdk.note.security.TokenService;
 import com.aboutdk.note.POJO.VO.NoteVO;
 import com.aboutdk.note.service.INoteService;
-import com.aboutdk.note.service.impl.NoteServiceImpl;
-import com.baomidou.mybatisplus.extension.service.IService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +20,6 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 import static com.aboutdk.note.consts.NoteConst.DELETED_NOTE;
-import static com.aboutdk.note.consts.NoteConst.LIVE_NOTE;
 
 /**
  * @author zhouyang
@@ -37,6 +35,10 @@ public class NoteController extends Thread {
 
     @Autowired
     private TokenService tokenService;
+
+    @Autowired
+    private NoteMapper noteMapper;
+
 
     @GetMapping("/findAll")
     public ResponseVO<List<NoteVO>> findAll(@RequestHeader HttpHeaders headers) {
@@ -65,7 +67,7 @@ public class NoteController extends Thread {
         log.info("fetch notes");
         String username = tokenService.getUsername(headers.getFirst("token"));
 
-        NoteDO noteDO = noteService.findById(id);
+        NoteDO noteDO = noteMapper.selectById(id);
         if (noteDO == null) {
             throw new RuntimeException("id not found");
         }
@@ -89,7 +91,7 @@ public class NoteController extends Thread {
 
     @PutMapping
     public ResponseVO updateNoteAndReorder(@Valid @RequestBody NoteForm updateForm,
-                                           @RequestHeader HttpHeaders headers) throws UpdateNoteVersionWrongException {
+                                           @RequestHeader HttpHeaders headers) {
         if (updateForm.getDeleted().equals(DELETED_NOTE)) {
             throw new RuntimeException("此接口不允许伪删除note");
         }
@@ -98,7 +100,7 @@ public class NoteController extends Thread {
 
         // update old note's number
         List<NoteDO> allNoteListDO = noteService.findAllByUsername(curUser);
-        List<NoteForm> liveNoteList = allNoteListDO
+        List<NoteDO> liveNoteList = allNoteListDO
                 .stream()
                 .filter((note) -> {
                     return !note.getDeleted().equals(DELETED_NOTE);
@@ -115,30 +117,24 @@ public class NoteController extends Thread {
                         return o1.getNumber() - o2.getNumber();
                     }
                 })
-                .map((note) -> {
-                    NoteForm noteForm = NoteDOMapper.INSTANCE.noteDOToNoteForm(note);
-                    return noteForm;
-                })
                 .collect(Collectors.toList());
 
         for (int i = 0; i < liveNoteList.size(); i++) {
-            NoteForm cur = liveNoteList.get(i);
+            NoteDO cur = liveNoteList.get(i);
             cur.setNumber(i + 1);
         }
 
         // set the updateForm to number 0, so it can be shown in first of the note list
         updateForm.setNumber(0);
         noteService.updateNote(curUser, updateForm, true);
-        for (NoteForm noteForm : liveNoteList) {
-            noteService.updateNote(curUser, noteForm);
-        }
+        noteService.updateBatchById(liveNoteList);
 
         List<NoteVO> res = this.findLiveListByUsername(curUser);
         return ResponseVO.success(res);
     }
 
     /*
-    此接口只提供修改 liveNoteList 排序的能力，也就是只修改 number 字段，不修改其他字段
+     *  此接口只提供修改 liveNoteList 排序的能力，也就是只修改 number 字段，不修改其他字段
      */
     @PutMapping("/updateLiveNoteList")
     public ResponseVO updateLiveNoteList(@RequestBody List<NoteForm> formList,

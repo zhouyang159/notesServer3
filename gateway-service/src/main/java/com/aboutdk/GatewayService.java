@@ -9,7 +9,6 @@ import org.springframework.context.annotation.Bean;
 @SpringBootApplication
 public class GatewayService {
     public static void main(String[] args) {
-        // 确保先启动 Eureka 以及其他微服务（note、user），再启动 gateway
         SpringApplication.run(GatewayService.class, args);
     }
 
@@ -17,21 +16,21 @@ public class GatewayService {
     public RouteLocator customRouteLocator(RouteLocatorBuilder builder) {
 
         return builder.routes()
-                .route("note_service", r -> r
-                        .path("/api/note/**")  // 匹配路径 /api/note/**
-                        .uri("lb://NoteApplication"))
-//                        .uri("http://119.23.74.175:8081"))
-//                        .uri("http://localhost:8081"))
-
-//              .route("user_service", r -> r
-//                      .path("/api/register/**") // 匹配路径 /api/register/**
-//                      .uri("lb://UserApplication")) // 同上，指向 UserApplication
-
-                .route("snowflakeId_service", r -> r
-                        .path("/snowflake/**") //
-                        .uri("lb://SnowflakeidApplication"))
-//                        .uri("http://119.23.74.175:8082"))
-//                        .uri("http://localhost:8082"))
+//                .route("note_service", r -> r
+//                        .path("/api/note/**")  // 匹配路径 /api/note/**
+//                        .uri("lb://NoteApplication"))
+////                        .uri("http://119.23.74.175:8081"))
+////                        .uri("http://localhost:8081"))
+//
+////              .route("user_service", r -> r
+////                      .path("/api/register/**") // 匹配路径 /api/register/**
+////                      .uri("lb://UserApplication")) // 同上，指向 UserApplication
+//
+//                .route("snowflakeId_service", r -> r
+//                        .path("/snowflake/**") //
+//                        .uri("lb://SnowflakeidApplication"))
+////                        .uri("http://119.23.74.175:8082"))
+////                        .uri("http://localhost:8082"))
 
                 .route("pc",
                         r -> r.path("/pc")
