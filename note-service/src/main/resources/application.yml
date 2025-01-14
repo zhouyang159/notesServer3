@@ -4,7 +4,8 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: 127.0.0.1:8848
+        server-addr: http://119.23.74.175:8848/ # aliyun
+#        server-addr: 127.0.0.1:8848
   main:
     web-application-type: servlet
   jackson:
@@ -15,7 +16,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: dk
     password: 159357123Ab
-    url: ${global.dbUrl}
+    url: jdbc:mysql://rm-cn-o493yvvyr0005meo.rwlb.rds.aliyuncs.com:3306/notes230412?characterEncoding=utf-8&useSSL=false&allowPublicKeyRetrieval=true
 
 server:
   port: 8081
@@ -24,7 +25,7 @@ server:
 
 logging:
   file:
-    name: ./logs/Note/Note-%d{yyyy-MM-dd}.log
+    name: ./logs/Note/NoteService-%d{yyyy-MM-dd}.log
     path: ./logs
 
 

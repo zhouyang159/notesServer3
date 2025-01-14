@@ -42,7 +42,7 @@ public class NoteController extends Thread {
 
     @GetMapping("/findAll")
     public ResponseVO<List<NoteVO>> findAll(@RequestHeader HttpHeaders headers) {
-        log.info("fetch notes");
+        log.info("request: /note/findAll");
 
         List<NoteDO> noteDOList;
         String username = tokenService.getUsername(headers.getFirst("token"));
@@ -64,7 +64,9 @@ public class NoteController extends Thread {
     @GetMapping("/{id}")
     public ResponseVO<NoteDO> findById(@PathVariable String id,
                                        @RequestHeader HttpHeaders headers) throws Exception {
-        log.info("fetch notes");
+        log.info("request: /note/{id}");
+        log.info("id: " + id);
+
         String username = tokenService.getUsername(headers.getFirst("token"));
 
         NoteDO noteDO = noteMapper.selectById(id);

@@ -130,44 +130,4 @@
         </dependency>
     </dependencies>
 
-<!--    <build>-->
-<!--        <pluginManagement>-->
-<!--            <plugins>-->
-<!--                <plugin>-->
-<!--                    <groupId>org.apache.maven.plugins</groupId>-->
-<!--                    <artifactId>maven-compiler-plugin</artifactId>-->
-<!--                    <version>3.8.1</version>-->
-<!--                    <configuration>-->
-<!--                        <source>1.8</source>-->
-<!--                        <target>1.8</target>-->
-<!--                        &lt;!&ndash; See https://maven.apache.org/plugins/maven-compiler-plugin/compile-mojo.html &ndash;&gt;-->
-<!--                        &lt;!&ndash; Classpath elements to supply as annotation processor path. If specified, the compiler   &ndash;&gt;-->
-<!--                        &lt;!&ndash; will detect annotation processors only in those classpath elements. If omitted, the     &ndash;&gt;-->
-<!--                        &lt;!&ndash; default classpath is used to detect annotation processors. The detection itself depends &ndash;&gt;-->
-<!--                        &lt;!&ndash; on the configuration of annotationProcessors.                                           &ndash;&gt;-->
-<!--                        &lt;!&ndash;                                                                                         &ndash;&gt;-->
-<!--                        &lt;!&ndash; According to this documentation, the provided dependency processor is not considered!   &ndash;&gt;-->
-<!--                        <annotationProcessorPaths>-->
-<!--                            <path>-->
-<!--                                <groupId>org.mapstruct</groupId>-->
-<!--                                <artifactId>mapstruct-processor</artifactId>-->
-<!--                                <version>${org.mapstruct.version}</version>-->
-<!--                            </path>-->
-<!--                            <path>-->
-<!--                                <groupId>org.projectlombok</groupId>-->
-<!--                                <artifactId>lombok</artifactId>-->
-<!--                                <version>${org.projectlombok.version}</version>-->
-<!--                            </path>-->
-<!--                            <path>-->
-<!--                                <groupId>org.projectlombok</groupId>-->
-<!--                                <artifactId>lombok-mapstruct-binding</artifactId>-->
-<!--                                <version>${lombok-mapstruct-binding.version}</version>-->
-<!--                            </path>-->
-<!--                        </annotationProcessorPaths>-->
-<!--                    </configuration>-->
-<!--                </plugin>-->
-<!--            </plugins>-->
-<!--        </pluginManagement>-->
-<!--    </build>-->
-
 </project>

@@ -1,5 +1,5 @@
 server:
-  port: 90
+  port: 9090
 #  port: 443    #HTTPS协议默认端口号为443，需要使用其他端口时，您可以在此处自定义。
 #  ssl:
 #    key-store-password: 8mcnnd7v    #填写jks-password.txt文件内的密码。
@@ -12,14 +12,16 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: 127.0.0.1:8848
+        server-addr: http://119.23.74.175:8848/
+#        server-addr: 127.0.0.1:8848
     gateway:
       discovery:
         locator:
           enabled: true
       routes:
         - id: NoteApplication
-          uri: http://localhost:8081
+          uri: http://114.132.189.139:8081 # 腾讯云
+#          uri: http://localhost:8081
           predicates:
             - Path=/api/note/**
 
@@ -28,7 +30,7 @@ logging:
     rollingpolicy:
       file-name-pattern: "${LOG_FILE}.%d{yyyy-MM-dd}.%i.log"
   file:
-    name: ./logs/Gateway/Geteway-%d{yyyy-MM-dd}.log
+    name: ./logs/Gateway/Gateway-%d{yyyy-MM-dd}.log
     path: ./logs
   level:
     org.springframework.cloud.gateway: DEBUG
