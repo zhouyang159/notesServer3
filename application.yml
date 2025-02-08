@@ -9,5 +9,5 @@ global:
   # dbUrl: jdbc:mysql://8.134.95.64:3306/notes230412?characterEncoding=utf-8&useSSL=false&allowPublicKeyRetrieval=true
 
   # prod database 2
-  dbUrl: jdbc:mysql://rm-cn-o493yvvyr0005meo.rwlb.rds.aliyuncs.com:3306/notes230412?characterEncoding=utf-8&useSSL=false&allowPublicKeyRetrieval=true
+  dbUrl: jdbc:mysql://note-mysql80.rdsmmp5v5fteui7.rds.gz.baidubce.com:3306/notes_dev_250205?characterEncoding=utf-8&useSSL=false&allowPublicKeyRetrieval=true
 

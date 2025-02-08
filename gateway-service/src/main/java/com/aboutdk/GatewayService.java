@@ -19,7 +19,7 @@ public class GatewayService {
 //                .route("note_service", r -> r
 //                        .path("/api/note/**")  // 匹配路径 /api/note/**
 //                        .uri("lb://NoteApplication"))
-////                        .uri("http://119.23.74.175:8081"))
+////                        .uri("http://113.44.7.213:8081"))
 ////                        .uri("http://localhost:8081"))
 //
 ////              .route("user_service", r -> r
@@ -29,7 +29,7 @@ public class GatewayService {
 //                .route("snowflakeId_service", r -> r
 //                        .path("/snowflake/**") //
 //                        .uri("lb://SnowflakeidApplication"))
-////                        .uri("http://119.23.74.175:8082"))
+////                        .uri("http://113.44.7.213:8082"))
 ////                        .uri("http://localhost:8082"))
 
                 .route("pc",

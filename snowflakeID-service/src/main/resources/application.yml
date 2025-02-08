@@ -4,16 +4,16 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: http://119.23.74.175:8848/ # aliyun
+        server-addr: http://113.44.7.213:8848/ # 华为云
   main:
     web-application-type: servlet
   jackson:
     time-zone: GMT+8
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    username: dk
+    username: dk_1
     password: 159357123Ab
-    url: jdbc:mysql://rm-cn-o493yvvyr0005meo.rwlb.rds.aliyuncs.com:3306/notes230412?characterEncoding=utf-8&useSSL=false&allowPublicKeyRetrieval=true
+    url: jdbc:mysql://note-mysql80.rdsmmp5v5fteui7.rds.gz.baidubce.com:3306/notes_dev_250205?characterEncoding=utf-8&useSSL=false&allowPublicKeyRetrieval=true
 
 
 server:
@@ -27,11 +27,11 @@ server:
 #    health-check-url: http://localhost:8082/actuator/health
 #    status-page-url: http://localhost:8082/actuator/info
 
-  #    ip-address: 119.23.74.175
-  #    hostname: 119.23.74.175
-  #    home-page-url: http://119.23.74.175:8082/
-  #    health-check-url: http://119.23.74.175:8082/actuator/health
-  #    status-page-url: http://119.23.74.175:8082/actuator/info
+  #    ip-address: 113.44.7.213
+  #    hostname: 113.44.7.213
+  #    home-page-url: http://113.44.7.213:8082/
+  #    health-check-url: http://113.44.7.213:8082/actuator/health
+  #    status-page-url: http://113.44.7.213:8082/actuator/info
 #  client:
 #    service-url:
 #      defaultZone: http://localhost:8761/eureka/
