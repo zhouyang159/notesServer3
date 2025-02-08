@@ -59,8 +59,6 @@ public class NoteController extends Thread {
                 .stream()
                 .map((note) -> {
                     NoteVO noteVO = NoteDOMapper.INSTANCE.noteDOToNoteVO(note);
-                    // this findAll api didn't return content data
-                    // noteVO.setContent(null);
                     return noteVO;
                 })
                 .collect(Collectors.toList());
