@@ -25,8 +25,6 @@ public class IdController {
 
       String snowflakeId = snowflakeIdClient.getSnowflakeId(curUser, "addNote");
 
-
-
       return ResponseVO.success(snowflakeId);
    }
 }
