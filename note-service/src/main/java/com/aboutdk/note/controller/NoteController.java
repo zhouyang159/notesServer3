@@ -9,7 +9,6 @@ import com.aboutdk.note.security.TokenService;
 import com.aboutdk.note.POJO.VO.NoteVO;
 import com.aboutdk.note.service.INoteService;
 import com.aboutdk.note.util.AESDecryptionUtil;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
@@ -28,7 +27,7 @@ import static com.aboutdk.note.consts.NoteConst.DELETED_NOTE;
  * @date 2022/10/01
  */
 @RestController
-@RequestMapping("/note")
+@RequestMapping("/api/note")
 @Slf4j
 public class NoteController extends Thread {
 

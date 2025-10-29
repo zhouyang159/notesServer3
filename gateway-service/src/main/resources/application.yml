@@ -9,10 +9,10 @@ server:
 spring:
   application:
     name: GatewayService
-  cloud:
-    nacos:
-      discovery:
-        server-addr: http://113.44.7.213:8848/ # 华为云
+#  cloud:
+#    nacos:
+#      discovery:
+#        server-addr: http://113.44.7.213:8848/ # 华为云
 #        server-addr: 127.0.0.1:8848
     gateway:
       discovery:

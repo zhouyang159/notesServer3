@@ -9,7 +9,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/snowflake")
+@RequestMapping("/api/snowflake")
 @Slf4j
 public class IdController {
 
