@@ -9,7 +9,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/snowflake")
+@RequestMapping("/api/snowflake")
 @Slf4j
 public class IdController {
 
@@ -24,8 +24,6 @@ public class IdController {
       String curUser = tokenService.getUsername(headers.getFirst("token"));
 
       String snowflakeId = snowflakeIdClient.getSnowflakeId(curUser, "addNote");
-
-
 
       return ResponseVO.success(snowflakeId);
    }

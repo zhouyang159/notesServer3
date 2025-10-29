@@ -3,19 +3,20 @@ package com.aboutdk.note.controller;
 import com.aboutdk.note.POJO.FORM.NoteForm;
 import com.aboutdk.note.POJO.DO.NoteDO;
 import com.aboutdk.note.POJO.VO.ResponseVO;
-import com.aboutdk.note.exception.UpdateNoteVersionWrongException;
 import com.aboutdk.note.mapper.mapStructMapper.NoteDOMapper;
 import com.aboutdk.note.mapper.mybatisMapper.NoteMapper;
 import com.aboutdk.note.security.TokenService;
 import com.aboutdk.note.POJO.VO.NoteVO;
 import com.aboutdk.note.service.INoteService;
+import com.aboutdk.note.util.AESDecryptionUtil;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -26,7 +27,7 @@ import static com.aboutdk.note.consts.NoteConst.DELETED_NOTE;
  * @date 2022/10/01
  */
 @RestController
-@RequestMapping("/note")
+@RequestMapping("/api/note")
 @Slf4j
 public class NoteController extends Thread {
 
@@ -39,9 +40,14 @@ public class NoteController extends Thread {
     @Autowired
     private NoteMapper noteMapper;
 
+    @Autowired
+    private ObjectMapper objectMapper;
+
+    private static String ENCRYPTED_TEXT = "encryptedText";
+
 
     @GetMapping("/findAll")
-    public ResponseVO<List<NoteVO>> findAll(@RequestHeader HttpHeaders headers) {
+    public ResponseVO<String> findAll(@RequestHeader HttpHeaders headers) throws Exception {
         log.info("request: /note/findAll");
 
         List<NoteDO> noteDOList;
@@ -52,17 +58,19 @@ public class NoteController extends Thread {
                 .stream()
                 .map((note) -> {
                     NoteVO noteVO = NoteDOMapper.INSTANCE.noteDOToNoteVO(note);
-                    // this findAll api didn't return content data
-                    // noteVO.setContent(null);
                     return noteVO;
                 })
                 .collect(Collectors.toList());
 
-        return ResponseVO.success(noteVoList);
+        String noteVoListJson = objectMapper.writeValueAsString(noteVoList);
+
+        String encryptedStr = AESDecryptionUtil.encrypt(noteVoListJson);
+
+        return ResponseVO.success(encryptedStr);
     }
 
     @GetMapping("/{id}")
-    public ResponseVO<NoteDO> findById(@PathVariable String id,
+    public ResponseVO<String> findById(@PathVariable String id,
                                        @RequestHeader HttpHeaders headers) throws Exception {
         log.info("request: /note/{id}");
         log.info("id: " + id);
@@ -77,23 +85,38 @@ public class NoteController extends Thread {
             throw new RuntimeException("this note is not belong to you");
         }
 
-        return ResponseVO.success(noteDO);
+        String noteDOJson = objectMapper.writeValueAsString(noteDO);
+        String encryptedStr = AESDecryptionUtil.encrypt(noteDOJson);
+
+        return ResponseVO.success(encryptedStr);
     }
 
     @PostMapping
-    public ResponseVO addNote(@Valid @RequestBody NoteForm newNote,
-                              @RequestHeader HttpHeaders headers) {
+    public ResponseVO<String> addNote(@RequestBody Map<String, String> request,
+                                      @RequestHeader HttpHeaders headers) throws Exception {
+        String encryptedText = request.get(ENCRYPTED_TEXT);
+
+        String decryptedText = AESDecryptionUtil.decrypt(encryptedText);
+        NoteForm newNote = objectMapper.readValue(decryptedText, NoteForm.class);
+
+
         log.info("addNote: {}", newNote.toString());
         String curUsername = tokenService.getUsername(headers.getFirst("token"));
 
         NoteDO noteDO = noteService.addNote(curUsername, newNote);
 
-        return ResponseVO.success(noteDO);
+        String jsonStr = objectMapper.writeValueAsString(noteDO);
+        return ResponseVO.success(AESDecryptionUtil.encrypt(jsonStr));
     }
 
     @PutMapping
-    public ResponseVO updateNoteAndReorder(@Valid @RequestBody NoteForm updateForm,
-                                           @RequestHeader HttpHeaders headers) {
+    public ResponseVO<String> updateNoteAndReorder(@RequestBody Map<String, String> request,
+                                                   @RequestHeader HttpHeaders headers) throws Exception {
+        String encryptedText = request.get(ENCRYPTED_TEXT);
+
+        String decryptedText = AESDecryptionUtil.decrypt(encryptedText);
+        NoteForm updateForm = objectMapper.readValue(decryptedText, NoteForm.class);
+
         if (updateForm.getDeleted().equals(DELETED_NOTE)) {
             throw new RuntimeException("此接口不允许伪删除note");
         }
@@ -132,15 +155,23 @@ public class NoteController extends Thread {
         noteService.updateBatchById(liveNoteList);
 
         List<NoteVO> res = this.findLiveListByUsername(curUser);
-        return ResponseVO.success(res);
+
+        String str = objectMapper.writeValueAsString(res);
+        return ResponseVO.success(AESDecryptionUtil.encrypt(str));
     }
 
     /*
      *  此接口只提供修改 liveNoteList 排序的能力，也就是只修改 number 字段，不修改其他字段
      */
     @PutMapping("/updateLiveNoteList")
-    public ResponseVO updateLiveNoteList(@RequestBody List<NoteForm> formList,
+    public ResponseVO updateLiveNoteList(@RequestBody Map<String, String> request,
                                          @RequestHeader HttpHeaders headers) throws Exception {
+        String encryptedText = request.get(ENCRYPTED_TEXT);
+        String noteFormListJson = AESDecryptionUtil.decrypt(encryptedText);
+        List<NoteForm> formList = objectMapper.readValue(noteFormListJson, new TypeReference<List<NoteForm>>() {
+        });
+
+
         // validate formList number
         for (int i = 0; i < formList.size(); i++) {
             NoteForm cur = formList.get(i);
@@ -181,12 +212,14 @@ public class NoteController extends Thread {
         }
 
         List<NoteVO> res = this.findLiveListByUsername(curUser);
-        return ResponseVO.success(res);
+
+        String jsonStr = objectMapper.writeValueAsString(res);
+        return ResponseVO.success(AESDecryptionUtil.encrypt(jsonStr));
     }
 
     @DeleteMapping("/toTrash/{fakeDeleteId}")
-    public ResponseVO fakeDelete(@PathVariable String fakeDeleteId,
-                                 @RequestHeader HttpHeaders headers) {
+    public ResponseVO fakeDeleteNote(@PathVariable String fakeDeleteId,
+                                     @RequestHeader HttpHeaders headers) throws Exception {
         log.info("fake delete note: {}", fakeDeleteId);
         String curUser = tokenService.getUsername(headers.getFirst("token"));
 
@@ -228,16 +261,21 @@ public class NoteController extends Thread {
         noteService.updateNote(curUser, find);
 
         List<NoteVO> res = this.findLiveListByUsername(curUser);
-        return ResponseVO.success(res);
+
+        String jsonStr = objectMapper.writeValueAsString(res);
+        String encryptedStr = AESDecryptionUtil.encrypt(jsonStr);
+        return ResponseVO.success(encryptedStr);
     }
 
     @DeleteMapping("/{noteId}")
-    public ResponseVO delete(@PathVariable String noteId,
-                             @RequestHeader HttpHeaders headers) {
+    public ResponseVO deleteNote(@PathVariable String noteId,
+                                 @RequestHeader HttpHeaders headers) throws Exception {
         log.info("delete note: {}", noteId);
         String curUser = tokenService.getUsername(headers.getFirst("token"));
         NoteDO noteDO = noteService.deleteNote(curUser, noteId);
-        return ResponseVO.success(noteDO);
+
+        String jsonStr = objectMapper.writeValueAsString(noteDO);
+        return ResponseVO.success(AESDecryptionUtil.encrypt(jsonStr));
     }
 
     public List<NoteVO> findLiveListByUsername(String username) {

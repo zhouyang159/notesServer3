@@ -1,7 +1,7 @@
 
 global:
   username: dk
-  password: consoleA1
+  password: 159357123Ab
   # dev database
   # dbUrl: jdbc:mysql://8.134.95.64:3306/notes240207_dev?characterEncoding=utf-8&useSSL=false&allowPublicKeyRetrieval=true
 
@@ -9,5 +9,5 @@ global:
   # dbUrl: jdbc:mysql://8.134.95.64:3306/notes230412?characterEncoding=utf-8&useSSL=false&allowPublicKeyRetrieval=true
 
   # prod database 2
-  dbUrl: jdbc:mysql://rm-wz99kfxt13jnuimburo.mysql.rds.aliyuncs.com:3306/notes230412?characterEncoding=utf-8&useSSL=false&allowPublicKeyRetrieval=true
+  dbUrl: jdbc:mysql://note-mysql80.rdsmmp5v5fteui7.rds.gz.baidubce.com:3306/notes_dev_250205?characterEncoding=utf-8&useSSL=false&allowPublicKeyRetrieval=true
 

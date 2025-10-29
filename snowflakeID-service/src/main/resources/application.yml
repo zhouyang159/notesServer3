@@ -4,7 +4,7 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: http://113.44.7.213:8848/ # huaweiyun nacos
+        server-addr: http://113.44.7.213:8848/ # 华为云
   main:
     web-application-type: servlet
   jackson:
@@ -27,11 +27,11 @@ server:
 #    health-check-url: http://localhost:8082/actuator/health
 #    status-page-url: http://localhost:8082/actuator/info
 
-  #    ip-address: 119.23.74.175
-  #    hostname: 119.23.74.175
-  #    home-page-url: http://119.23.74.175:8082/
-  #    health-check-url: http://119.23.74.175:8082/actuator/health
-  #    status-page-url: http://119.23.74.175:8082/actuator/info
+  #    ip-address: 113.44.7.213
+  #    hostname: 113.44.7.213
+  #    home-page-url: http://113.44.7.213:8082/
+  #    health-check-url: http://113.44.7.213:8082/actuator/health
+  #    status-page-url: http://113.44.7.213:8082/actuator/info
 #  client:
 #    service-url:
 #      defaultZone: http://localhost:8761/eureka/

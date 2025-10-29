@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/public/note-web/static/css/main.0cbdadfc.css",
+    "main.js": "/public/note-web/static/js/main.761b5001.js",
+    "static/media/png": "/public/note-web/static/media/1e7b63404cd2fb8e6525b2fd4ee4d286.b0275d38b7b78d6dd461.png",
+    "index.html": "/public/note-web/index.html",
+    "main.0cbdadfc.css.map": "/public/note-web/static/css/main.0cbdadfc.css.map",
+    "main.761b5001.js.map": "/public/note-web/static/js/main.761b5001.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0cbdadfc.css",
+    "static/js/main.761b5001.js"
+  ]
+}
